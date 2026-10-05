@@ -35,7 +35,7 @@
 #   - a notarytool profile: xcrun notarytool store-credentials "search"
 #     (SEARCH_NOTARY_PROFILE names it; default "search")
 #   - SEARCH_DOWNLOAD_URL, the https folder the three files are served from,
-#     for the appcast. Default https://officecommun.com/search, which is
+#     for the appcast. Default https://dajet.ru/browser, which is
 #     where Updater.feed in Updater.swift looks.
 #
 # NOTES.md, next to this script, is what's new: newest release first, one
@@ -52,8 +52,9 @@ case "$ARCH" in
   x86_64) OUT="build/intel"; SUBFOLDER="/intel" ;;
   *) echo "SEARCH_ARCH is arm64 or x86_64, not “$ARCH”" >&2; exit 1 ;;
 esac
-APP="$OUT/Search.app"
-NAME="Search"
+APP="$OUT/Dajet.app"
+NAME="Dajet"
+EXEC="dajet"
 VERSION="$(tr -d '[:space:]' < VERSION)"
 # A build number that only ever goes up, so the updater can tell newer from
 # older without parsing version strings.
@@ -68,26 +69,26 @@ MINIMUM="14.0"
 SWIFTFLAGS=(-c "$CONFIG" --arch "$ARCH")
 [ "$CONFIG" = "release" ] && SWIFTFLAGS+=(-Xswiftc -Osize)
 swift build "${SWIFTFLAGS[@]}"
-BINARY="$(swift build "${SWIFTFLAGS[@]}" --show-bin-path)/Search"
+BINARY="$(swift build "${SWIFTFLAGS[@]}" --show-bin-path)/Dajet"
 [ "$(lipo -archs "$BINARY")" = "$ARCH" ] || { echo "$BINARY is not a $ARCH binary" >&2; exit 1; }
 
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-cp "$BINARY" "$APP/Contents/MacOS/$NAME"
+cp "$BINARY" "$APP/Contents/MacOS/$EXEC"
 # The AppleScript dictionary (Scripting.swift): read-only, tabs' addresses
 # and titles. The plist below points to it.
-cp Search.sdef "$APP/Contents/Resources/"
+cp Dajet.sdef "$APP/Contents/Resources/"
 
 # Symbols stay out of the app. The linker leaves every function's name and a
 # map back to the source in the binary — 15,000 entries, more than half of
 # what the app weighed (6.5 MB of binary, 2.7 without them), and nothing the
 # app reads while it runs. They are kept beside the build instead, as a dSYM
 # that turns the addresses in a crash report back into names (Console, or
-# atos -o build/Search.app.dSYM/Contents/Resources/DWARF/Search).
+# atos -o build/Dajet.app.dSYM/Contents/Resources/DWARF/Dajet).
 if [ "$CONFIG" = "release" ]; then
   rm -rf "$APP.dSYM"
   dsymutil "$BINARY" -o "$APP.dSYM" 2>/dev/null || echo "no dSYM this time" >&2
-  strip -x "$APP/Contents/MacOS/$NAME"
+  strip -x "$APP/Contents/MacOS/$EXEC"
 fi
 
 # The icon, drawn fresh each time — it is thirty lines of Swift, not an asset
@@ -133,8 +134,8 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <dict>
   <key>CFBundleName</key><string>$NAME</string>
   <key>CFBundleDisplayName</key><string>$NAME</string>
-  <key>CFBundleExecutable</key><string>$NAME</string>
-  <key>CFBundleIdentifier</key><string>com.officecommun.search</string>
+  <key>CFBundleExecutable</key><string>$EXEC</string>
+  <key>CFBundleIdentifier</key><string>ru.dajet.browser</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleShortVersionString</key><string>$VERSION</string>
   <key>CFBundleVersion</key><string>$BUILD</string>
@@ -142,10 +143,10 @@ cat > "$APP/Contents/Info.plist" <<PLIST
   $ICONNAME
   <key>LSMinimumSystemVersion</key><string>$MINIMUM</string>
   <key>LSApplicationCategoryType</key><string>public.app-category.productivity</string>
-  <key>NSHumanReadableCopyright</key><string>© Office Commun · Search</string>
+  <key>NSHumanReadableCopyright</key><string>© Dajet</string>
   <key>NSHighResolutionCapable</key><true/>
   <key>NSAppleScriptEnabled</key><true/>
-  <key>OSAScriptingDefinition</key><string>Search.sdef</string>
+  <key>OSAScriptingDefinition</key><string>Dajet.sdef</string>
   <!-- Owning http and https is what sends a link clicked in Mail here.
        Appearing in Desktop & Dock → Default web browser also needs the
        XHTML document type below. -->
@@ -165,9 +166,9 @@ cat > "$APP/Contents/Info.plist" <<PLIST
       <key>LSItemContentTypes</key>
       <array><string>public.html</string><string>com.apple.web-internet-location</string></array>
     </dict>
-    <!-- macOS only lists an app under Desktop & Dock → Default web browser
-         when it claims public.xhtml as well as public.html. http and https
-         alone, which Search already had, are not enough. -->
+       <!-- macOS only lists an app under Desktop & Dock → Default web browser
+          when it claims public.xhtml as well as public.html. http and https
+          alone, which Dajet already had, are not enough. -->
     <dict>
       <key>CFBundleTypeName</key><string>XHTML page</string>
       <key>CFBundleTypeRole</key><string>Viewer</string>
@@ -183,11 +184,11 @@ cat > "$APP/Contents/Info.plist" <<PLIST
        still wants a sentence to put in its own prompt, and touching the APIs
        without one is a crash rather than a refusal. -->
   <key>NSCameraUsageDescription</key>
-  <string>Websites you visit can ask to use your camera. Search asks you the first time each site does and keeps your answer; Settings › Privacy forgets them.</string>
+  <string>Websites you visit can ask to use your camera. Dajet asks you the first time each site does and keeps your answer; Settings › Privacy forgets them.</string>
   <key>NSMicrophoneUsageDescription</key>
-  <string>Websites you visit can ask to use your microphone. Search asks you the first time each site does and keeps your answer; Settings › Privacy forgets them.</string>
+  <string>Websites you visit can ask to use your microphone. Dajet asks you the first time each site does and keeps your answer; Settings › Privacy forgets them.</string>
   <key>NSLocationUsageDescription</key>
-  <string>Websites you visit can ask for your location. Search asks you each time a site does, unless you choose Always allow for it; Settings › Privacy forgets those choices.</string>
+  <string>Websites you visit can ask for your location. Dajet asks you each time a site does, unless you choose Always allow for it; Settings › Privacy forgets those choices.</string>
   <key>NSDownloadsFolderUsageDescription</key>
   <string>Files you download are saved to your Downloads folder.</string>
 </dict>
@@ -204,10 +205,10 @@ IDENTITY="${SEARCH_SIGN_IDENTITY:-$(security find-identity -v -p codesigning 2>/
 # Developer ID provisioning profile that carries it. With the profile next to
 # this script, both go in; without it, the app is signed as before, because
 # a restricted entitlement with no profile behind it is an app that won't open.
-ENTITLEMENTS="Search.entitlements"
-if [ -f "Search.provisionprofile" ]; then
-  cp "Search.provisionprofile" "$APP/Contents/embedded.provisionprofile"
-  ENTITLEMENTS="Search.passkeys.entitlements"
+ENTITLEMENTS="Dajet.entitlements"
+if [ -f "Dajet.provisionprofile" ]; then
+  cp "Dajet.provisionprofile" "$APP/Contents/embedded.provisionprofile"
+  ENTITLEMENTS="Dajet.passkeys.entitlements"
   echo "passkeys: profile embedded"
 fi
 if [ -n "$IDENTITY" ]; then
@@ -272,7 +273,7 @@ echo "packed: $ZIP"
 # characters JSON minds escaped, is the line under the version in Settings.
 # Written last — after notarisation has stapled its ticket to the DMG, which
 # changes it — so the DMG's hash is the one people download.
-BASE="${SEARCH_DOWNLOAD_URL:-https://officecommun.com/search}"
+BASE="${SEARCH_DOWNLOAD_URL:-https://dajet.ru/browser}"
 BASE="${BASE%/}$SUBFOLDER"
 NOTES=""
 if [ -f NOTES.md ]; then
@@ -281,18 +282,18 @@ if [ -f NOTES.md ]; then
 fi
 # The AI add-on's engine (engine.sh), when this release offers one: Apple
 # Silicon only for now. SEARCH_AI_ENGINE_VERSION names it — a number that
-# only goes up, as Search never takes a lower one — and the signed,
+# only goes up, as Dajet never takes a lower one — and the signed,
 # notarised binary in build/engine/ goes beside the other files, under ai/,
 # with its hash and size in the feed. The feed's own signature is what
-# vouches for them; Search then checks the engine's signature itself.
+# vouches for them; Dajet then checks the engine's signature itself.
 AIBLOCK=""
 write_engine() {
   local ENGINE="build/engine/search-ai-engine-arm64"
   [ "$ARCH" = "arm64" ] && [ -n "${SEARCH_AI_ENGINE_VERSION:-}" ] || return 0
   [[ "$SEARCH_AI_ENGINE_VERSION" =~ ^[0-9]+$ ]] || { echo "SEARCH_AI_ENGINE_VERSION is a whole number" >&2; exit 1; }
   [ -f "$ENGINE" ] || { echo "$ENGINE is missing — ./engine.sh arm64 makes it" >&2; exit 1; }
-  codesign --verify --strict -R='anchor apple generic and identifier "com.officecommun.search.ai-engine" and certificate leaf[subject.OU] = "7BYKA895MC"' "$ENGINE" \
-    || { echo "$ENGINE isn't signed with the Developer ID as com.officecommun.search.ai-engine" >&2; exit 1; }
+  codesign --verify --strict -R='anchor apple generic and identifier "ru.dajet.browser.ai-engine" and certificate leaf[subject.OU] = "7BYKA895MC"' "$ENGINE" \
+    || { echo "$ENGINE isn't signed with the Developer ID as ru.dajet.browser.ai-engine" >&2; exit 1; }
   local FILE="search-ai-engine-arm64-$SEARCH_AI_ENGINE_VERSION"
   mkdir -p "$OUT/ai"
   cp "$ENGINE" "$OUT/ai/$FILE"
@@ -326,7 +327,7 @@ JSON
     local SIGNED
     SIGNED="$(mktemp -d)"
     cp "$OUT/appcast.json" "$SIGNED/appcast.json"
-    codesign --force --timestamp --sign "$IDENTITY" --identifier com.officecommun.search.appcast "$SIGNED/appcast.json"
+    codesign --force --timestamp --sign "$IDENTITY" --identifier ru.dajet.browser.appcast "$SIGNED/appcast.json"
     ditto -c -k --sequesterRsrc "$SIGNED/appcast.json" "$OUT/appcast.json.zip"
     rm -rf "$SIGNED"
     echo "signed: $OUT/appcast.json.zip"
@@ -339,7 +340,7 @@ if [ "$STEP" = "dmg" ]; then write_appcast; exit 0; fi
 # is fetched by an app that already trusts it, and is left as hashed.
 [ -z "$IDENTITY" ] && { echo "can't ship without a Developer ID certificate" >&2; exit 1; }
 for FILE in "$DMG" "$ZIP"; do
-  xcrun notarytool submit "$FILE" --keychain-profile "${SEARCH_NOTARY_PROFILE:-search}" --wait
+  xcrun notarytool submit "$FILE" --keychain-profile "${SEARCH_NOTARY_PROFILE:-dajet}" --wait
 done
 xcrun stapler staple "$DMG"
 write_appcast

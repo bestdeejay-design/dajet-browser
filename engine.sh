@@ -10,7 +10,7 @@
 # in, linked with the helper, stripped, and signed with the hardened runtime
 # and the App Sandbox (Engine/engine.entitlements) — the Developer ID when
 # there is one (SEARCH_SIGN_IDENTITY, or the first found; "-" for none), ad-hoc otherwise,
-# which Search accepts only in a test run. Everything goes to build/engine/.
+# which Dajet accepts only in a test run. Everything goes to build/engine/.
 # Notarizing and publishing are the release's, not this script's.
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -19,7 +19,7 @@ LLAMA_TAG="v0.5.0"
 LLAMA_COMMIT="7fe450e19305b828c199d602c23a8337aaa1f03b"
 OUT="build/engine"
 SRC="$OUT/llama.cpp"
-IDENTIFIER="com.officecommun.search.ai-engine"
+IDENTIFIER="ru.dajet.browser.ai-engine"
 JOBS=$(sysctl -n hw.logicalcpu)
 which="${1:-all}"
 
@@ -80,7 +80,7 @@ build() {
   else
     codesign --force --options runtime --entitlements Engine/engine.entitlements \
       --identifier "$IDENTIFIER" --sign - "$exe"
-    echo "note: signed ad-hoc — only a test run of Search will start it"
+    echo "note: signed ad-hoc — only a test run of Dajet will start it"
   fi
   printf '%s  %s bytes  sha256 %s\n' "$exe" "$(stat -f %z "$exe")" "$(shasum -a 256 "$exe" | cut -d' ' -f1)"
 }

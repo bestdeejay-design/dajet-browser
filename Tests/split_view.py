@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Split View, checked through Search's own model in a hidden probe.
+"""Split View, checked through Dajet's own model in a hidden probe.
 
 Build first (`./build.sh` or `./build.sh debug`), then run
 `python3 Tests/split_view.py`. The app is started hidden in a world of its
@@ -24,7 +24,7 @@ from pathlib import Path
 
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 ROOT = Path(__file__).resolve().parents[1]
-APP = str(ROOT / "build" / "Search.app")
+APP = str(ROOT / "build" / "Dajet.app")
 HOME = os.path.expanduser("~")
 def use(name):
     """This checkout's own world for a suite: the name, then a tag made from
@@ -34,8 +34,8 @@ def use(name):
     wants a world apart from the split suite's calls it with its own name."""
     global W, SUPPORT, SUITE, SOCK
     W = f"{name}-{hashlib.sha1(str(ROOT).encode()).hexdigest()[:8]}"
-    SUPPORT = f"{HOME}/Library/Application Support/Search ({W})"
-    SUITE = f"com.officecommun.search.test.{W}"
+    SUPPORT = f"{HOME}/Library/Application Support/Dajet ({W})"
+    SUITE = f"ru.dajet.browser.test.{W}"
     SOCK = f"{SUPPORT}/bench.sock"
 use("split-tests")
 class H(BaseHTTPRequestHandler):
@@ -52,7 +52,7 @@ class H(BaseHTTPRequestHandler):
 srv = ThreadingHTTPServer(("127.0.0.1", 0), H); threading.Thread(target=srv.serve_forever, daemon=True).start()
 BASE = f"http://127.0.0.1:{srv.server_port}"
 # Only ever a probe of this world: the one this run started, or one a run
-# before left holding this world's socket. Never the Search someone is using,
+# before left holding this world's socket. Never the Dajet someone is using,
 # even one running from this very build (see running()).
 started = set()
 def running(): return set(subprocess.run(["pgrep", "-f", APP + "/Contents/MacOS"], capture_output=True, text=True).stdout.split())
@@ -62,14 +62,14 @@ def wipe():
     subprocess.run(["rm", "-rf", SUPPORT]); subprocess.run(["defaults", "delete", SUITE], capture_output=True)
 def probe(pid):
     names = subprocess.run(["lsof", "-a", "-U", "-p", pid, "-Fn"], capture_output=True, text=True).stdout
-    return any(n.startswith("n") and "/Search (" in n and n.endswith("/bench.sock") for n in names.splitlines())
+    return any(n.startswith("n") and "/Dajet (" in n and n.endswith("/bench.sock") for n in names.splitlines())
 def main_checkout():
     git = lambda *a: subprocess.run(["git", "-C", str(ROOT), "rev-parse", *a], capture_output=True, text=True).stdout.strip()
     return git("--git-dir") != "" and Path(git("--absolute-git-dir")) == Path(ROOT, git("--git-common-dir")).resolve()
-# Someone's own Search running from this build: no probe starts beside it
+# Someone's own Dajet running from this build: no probe starts beside it
 # from here. Run the tests from a worktree of your own instead.
 if main_checkout() and any(not probe(p) for p in running()):
-    sys.exit(f"{APP} is in use by a Search that isn't a probe. Run the tests from a worktree (git worktree add).")
+    sys.exit(f"{APP} is in use by a Dajet that isn't a probe. Run the tests from a worktree (git worktree add).")
 def setup(**prefs):
     for p in pids(): subprocess.run(["kill", p])
     started.clear()

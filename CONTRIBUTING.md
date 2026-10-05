@@ -8,7 +8,7 @@ For anything beyond a small fix, open an issue first describing what you want to
 
 ## New features: off until someone turns them on
 
-Search stays small by default. Anything new that changes how the browser
+Dajet stays small by default. Anything new that changes how the browser
 looks or behaves — spaces, groups, a visible address bar, a new panel — is:
 
 - **minimal**: the smallest version that does the job, in the app's own quiet style;
@@ -32,7 +32,7 @@ Fixes and things every browser is expected to do (Tab moving between a form's fi
 ## What doesn't
 
 - Rewrites of things that already work, for style reasons alone.
-- Anything that phones home, adds analytics, or changes what leaves the app over the network — see the [privacy page](https://officecommun.com/search/privacy) for what that boundary currently is.
+- Anything that phones home, adds analytics, or changes what leaves the app over the network — see Privacy, concretely in [README.md](README.md) for what that boundary currently is.
 - Vendoring Chromium or any other engine. This is a WebKit browser on purpose.
 - A real key or token anywhere: in code, a test, an issue, a pull request or a pasted log. Tests use keys that are obviously made up. `gitleaks git --pre-commit --staged` with the repo's `.gitleaks.toml` catches most of them before a commit; it is worth running as a pre-commit hook.
 
@@ -42,4 +42,4 @@ Pull requests are reviewed by Drice, usually with Claude Code doing a first pass
 
 ## Reporting a bug
 
-Open an issue with: what you did, what you expected, what happened instead, and your macOS version. A crash log, if there is one, lives at `~/Library/Application Support/Search/crash.log` — it only ever stays on your Mac unless you paste it into the issue yourself.
+Open an issue with: what you did, what you expected, what happened instead, and your macOS version. A crash log, if there is one, lives at `~/Library/Application Support/Dajet/crash.log` — it only ever stays on your Mac unless you paste it into the issue yourself.

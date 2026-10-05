@@ -1,10 +1,10 @@
-// search-ai-engine: the model behind "On this Mac" in Search's AI add-on.
+// search-ai-engine: the model behind "On this Mac" in Dajet's AI add-on.
 //
-// A small program of its own, not part of Search: Search starts it when a
+// A small program of its own, not part of Dajet: Dajet starts it when a
 // page is to be summarized on this Mac, talks to it over its standard input
 // and output, one JSON object per line, and lets it go when it has been idle
 // a while. It runs in the App Sandbox with no network and no files of its
-// own to read: the model comes as a file Search has already opened, and
+// own to read: the model comes as a file Dajet has already opened, and
 // checked, on descriptor 3 (see AIEngine.swift). All it can do is turn text
 // into more text.
 //
@@ -114,7 +114,7 @@ static std::set<int> cancelled;
 // for a request still waiting is remembered; any other line — the next
 // request — is kept for later.
 static bool stopped(int id, std::string & carry) {
-    if (!fill(carry, false)) return true;  // Search has gone: nobody to answer.
+    if (!fill(carry, false)) return true;  // Dajet has gone: nobody to answer.
     std::string kept;
     bool stop = false;
     size_t start = 0, end;
@@ -142,7 +142,7 @@ int main(int argc, char ** argv) {
     llama_log_set(quiet, nullptr);
     llama_backend_init();
 
-    // The model, as Search opened it.
+    // The model, as Dajet opened it.
     llama_model_params model_params = llama_model_default_params();
 #if defined(__x86_64__)
     model_params.n_gpu_layers = 0;

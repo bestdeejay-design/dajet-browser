@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Every idea and report about Search, in one live list.
+"""Every idea and report about Dajet, in one live list.
 
 The list lives in the Office Commun database (table search_ideas) and is read
 live by https://officecommun.com/search/roadmap: a change here shows there
@@ -11,7 +11,7 @@ within a second. ROADMAP.md is written from it (`./ideas md`).
     ./ideas show ID
     ./ideas add TITLE [DETAIL] --area AREA [--now|--next|--later] [--status S] [--fix|--feature] [--from SRC…]
     ./ideas from ID SRC…             one more person asked: add sources
-    ./ideas start ID WHO             someone is building it now (WHO: "Office Search 3")
+    ./ideas start ID WHO             someone is building it now (WHO: "Dajet 1")
     ./ideas stop ID                  back on the list
     ./ideas done ID [VERSION]        on main: it goes out with the next version
     ./ideas set ID KEY=VALUE…        title, detail, area, status, lane, kind, reason, version, by
@@ -43,7 +43,7 @@ import urllib.error
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = "driceroland/Search"
+REPO = "bestdeejay-design/dajet-browser"
 PROJECT = "auvryubksvduljzkkdcj"
 STATUSES = ["building", "ready", "planned", "review", "call", "asked", "new", "declined", "shipped"]
 LANES = ["now", "next", "later"]
@@ -162,7 +162,7 @@ def board():
 
 HEADER = """# Roadmap
 
-Every idea and every report about Search, in one place: what is being built
+Every idea and every report about Dajet, in one place: what is being built
 right now, what goes out with the next version, what comes after, and what
 is not on the list — each with where it came from. GitHub issues, pull
 requests, the emails that reach hello@officecommun.com and the replies on X
@@ -172,14 +172,14 @@ all land here.
 it changes the moment the work does. This file is a copy of the same list,
 written by `./ideas md`. What has shipped is in [CHANGELOG.md](CHANGELOG.md).
 
-Want something that isn't here? [Open an issue](https://github.com/driceroland/Search/issues).
+Want something that isn't here? [Open an issue](https://github.com/bestdeejay-design/dajet-browser/issues).
 Want to build something that is? Say so on its issue first, so two people
 don't build it twice.
 
 ## Keeping it whole
 
 The list is only worth something if nothing is missing from it and nothing
-in it is stale. Whoever works on Search keeps it that way, with `./ideas`
+in it is stale. Whoever works on Dajet keeps it that way, with `./ideas`
 (`./ideas help` for everything it does):
 
 - **Every new idea or report gets its line the day it arrives**, whatever the
