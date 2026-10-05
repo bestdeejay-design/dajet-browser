@@ -1,0 +1,58 @@
+/* Dajet Quiet — system-native type, high-contrast ink, restrained chrome. */
+:root {
+  color-scheme: light dark;
+
+  --dj-plate-light: #FFFFFF;
+  --dj-ink-light: #171A1E;
+  --dj-plate-dark: #15181C;
+  --dj-ink-dark: #F4F1E8;
+  --dj-accent-brand: #7A3B26;
+
+  --dj-bg: #F2F1EC;
+  --dj-surface: var(--dj-plate-light);
+  --dj-ink: var(--dj-ink-light);
+  --dj-quiet-ink: #464B4F;
+  --dj-accent: var(--dj-accent-brand);
+  --dj-rule: rgba(23, 26, 30, 0.14);
+  --dj-selection: rgba(122, 59, 38, 0.12);
+
+  --dj-font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  --dj-font-mono: "SF Mono", ui-monospace, Menlo, Monaco, monospace;
+
+  --dj-radius-small: 6px;
+  --dj-radius-control: 11px;
+  --dj-radius-widget: 10px;
+  --dj-radius-window: 18px;
+
+  --dj-shadow-window: 0 16px 42px rgba(23, 26, 30, 0.09), 0 2px 7px rgba(23, 26, 30, 0.055);
+  --dj-shadow-floating: 0 6px 18px rgba(23, 26, 30, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dj-bg: #17191D;
+    --dj-surface: var(--dj-plate-dark);
+    --dj-ink: var(--dj-ink-dark);
+    --dj-quiet-ink: #C3C3BE;
+    --dj-accent: #E8AE8C;
+    --dj-rule: rgba(244, 241, 232, 0.17);
+    --dj-selection: rgba(232, 174, 140, 0.16);
+    --dj-shadow-window: 0 18px 48px rgba(0, 0, 0, 0.30), 0 2px 8px rgba(0, 0, 0, 0.20);
+    --dj-shadow-floating: 0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+}
+
+html,
+body {
+  color: var(--dj-ink);
+  background: var(--dj-bg);
+  font-family: var(--dj-font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  color: var(--dj-ink);
+  background: var(--dj-selection);
+}
