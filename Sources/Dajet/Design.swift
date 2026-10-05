@@ -185,7 +185,7 @@ struct Logomark: Shape {
     /// A D reduced to an aperture. The same path as Icon/icon.swift and
     /// the website's mark. The counter runs counter-clockwise against the
     /// bowl, so it cuts out under either winding rule.
-    private static let data = "M16 16H48C71 16 84 30 84 50C84 70 71 84 48 84H16Z M33 32V68H48C61 68 68 62 68 50C68 38 61 32 48 32Z"
+    private static let data = "M 12.5 12.5 H 48 C 71.2 12.5 87.5 27.4 87.5 50 C 87.5 72.6 71.2 87.5 48 87.5 H 12.5 Z M 31.5 31 V 69 H 48 C 59.9 69 68.5 62.6 68.5 50 C 68.5 37.4 59.9 31 48 31 Z"
 
     func path(in rect: CGRect) -> Path {
         // Fit the canvas into whatever frame this is given, centred, at the

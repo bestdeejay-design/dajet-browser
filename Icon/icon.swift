@@ -13,7 +13,7 @@ try? FileManager.default.createDirectory(at: out, withIntermediateDirectories: t
 /// canvas. The same path is in Design.swift's `Logomark` and in the
 /// website's mark — one shape, three places.
 let canvas = (width: 100.0, height: 100.0)
-let markData = "M16 16H48C71 16 84 30 84 50C84 70 71 84 48 84H16Z M33 32V68H48C61 68 68 62 68 50C68 38 61 32 48 32Z"
+let markData = "M 12.5 12.5 H 48 C 71.2 12.5 87.5 27.4 87.5 50 C 87.5 72.6 71.2 87.5 48 87.5 H 12.5 Z M 31.5 31 V 69 H 48 C 59.9 69 68.5 62.6 68.5 50 C 68.5 37.4 59.9 31 48 31 Z"
 
 /// A tiny reader for the one path the mark is: absolute M, L, H, V, C, Z —
 /// what Figma writes for a flattened shape, and nothing else.
@@ -102,8 +102,8 @@ func draw(_ size: CGFloat) -> NSImage {
     shape.fill()
     NSGraphicsContext.restoreGraphicsState()
 
-    // The mark, black on the plate, at three quarters of the plate.
-    NSColor(red: 0, green: 0, blue: 0, alpha: 1).setFill()
+    // The mark, ink on the plate, at three quarters of the plate.
+    NSColor(red: 0.0902, green: 0.1020, blue: 0.1176, alpha: 1).setFill()
     markPath(in: plate, fraction: 0.754).fill()
     return image
 }
@@ -160,12 +160,12 @@ if CommandLine.arguments.count > 2 {
     let height = width * canvas.height / canvas.width
     let svg = """
     <svg xmlns="http://www.w3.org/2000/svg" width="\(width)" height="\(height)" viewBox="0 0 \(Int(canvas.width)) \(Int(canvas.height))">\
-    <path fill-rule="evenodd" fill="#000000" d="\(markData)"/></svg>
+    <path fill-rule="evenodd" fill="#171A1E" d="\(markData)"/></svg>
     """
     try svg.write(to: assets.appendingPathComponent("mark.svg"), atomically: true, encoding: .utf8)
 
     let white = #"{ "solid" : "srgb:1.00000,1.00000,1.00000,1.00000" }"#
-    let ink = #"{ "solid" : "srgb:0.00000,0.00000,0.00000,1.00000" }"#
+    let ink = #"{ "solid" : "srgb:0.09020,0.10200,0.11760,1.00000" }"#
     let json = """
     {
       "fill" : \(white),
