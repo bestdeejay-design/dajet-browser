@@ -35,7 +35,7 @@
 #   - a notarytool profile: xcrun notarytool store-credentials "search"
 #     (SEARCH_NOTARY_PROFILE names it; default "search")
 #   - SEARCH_DOWNLOAD_URL, the https folder the three files are served from,
-#     for the appcast. Default https://dajet.ru/browser, which is
+#     for the appcast. Default https://bro.dajet.ru, which is
 #     where Updater.feed in Updater.swift looks.
 #
 # NOTES.md, next to this script, is what's new: newest release first, one
@@ -273,7 +273,7 @@ echo "packed: $ZIP"
 # characters JSON minds escaped, is the line under the version in Settings.
 # Written last — after notarisation has stapled its ticket to the DMG, which
 # changes it — so the DMG's hash is the one people download.
-BASE="${SEARCH_DOWNLOAD_URL:-https://dajet.ru/browser}"
+BASE="${SEARCH_DOWNLOAD_URL:-https://bro.dajet.ru}"
 BASE="${BASE%/}$SUBFOLDER"
 NOTES=""
 if [ -f NOTES.md ]; then

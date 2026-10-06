@@ -43,9 +43,9 @@ final class Updater: ObservableObject {
         // SEARCH_ARCH=x86_64) and a feed beside it naming only Intel builds,
         // so neither kind of Mac is ever offered the other's.
         #if arch(x86_64)
-        return URL(string: "https://dajet.ru/browser/intel/appcast.json")!
+        return URL(string: "https://bro.dajet.ru/intel/appcast.json")!
         #else
-        return URL(string: "https://dajet.ru/browser/appcast.json")!
+        return URL(string: "https://bro.dajet.ru/appcast.json")!
         #endif
     }()
 
@@ -215,7 +215,7 @@ final class Updater: ObservableObject {
                     if Store.testing { Updater.diskVerdict = "verified" } else { NSWorkspace.shared.open(dmg) }
                 case .failure(let error):
                     Updater.diskVerdict = "refused: \(error)"
-                    say?("That download didn't check out — get Dajet from dajet.ru/browser")
+                    say?("That download didn't check out — get Dajet from bro.dajet.ru")
                 }
             }
         }
