@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ru" data-locale="ru">
+<html lang="ru" data-locale="ru" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f2ee">
-  <meta name="description" content="Лёгкий браузер для macOS. Чистый стартовый экран, локальная история и никакой телеметрии.">
-  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#15181c">
+  <meta name="description" content="Лёгкий браузер для macOS. Тёмный стартовый экран, локальная история и никакой телеметрии.">
+  <meta name="color-scheme" content="dark light">
 
   <title>Dajet — браузер для тихого интернета</title>
   <link rel="canonical" href="https://bro.dajet.ru/">
@@ -15,17 +15,18 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dajet">
   <meta property="og:title" content="Dajet — браузер для тихого интернета">
-  <meta property="og:description" content="Лёгкий браузер для macOS. Чистый стартовый экран, локальная история и никакой телеметрии.">
+  <meta property="og:description" content="Лёгкий браузер для macOS. Тёмный стартовый экран, локальная история и никакой телеметрии.">
   <meta property="og:url" content="https://bro.dajet.ru/">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:image" content="https://bro.dajet.ru/assets/og-image.png">
+  <meta property="og:image:alt" content="Dajet: тёмный браузерный экран, локальная история и минимальный интерфейс.">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dajet — браузер для тихого интернета">
-  <meta name="twitter:description" content="Лёгкий браузер для macOS. Чистый стартовый экран, локальная история и никакой телеметрии.">
+  <meta name="twitter:description" content="Лёгкий браузер для macOS. Тёмный стартовый экран, локальная история и никакой телеметрии.">
   <meta name="twitter:image" content="https://bro.dajet.ru/assets/og-image.png">
 </head>
 <body>
@@ -54,6 +55,12 @@
           <button type="button" data-locale-choice="ru" aria-pressed="true">RU</button>
           <button type="button" data-locale-choice="en" aria-pressed="false">EN</button>
         </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить на светлую тему" title="Переключить на светлую тему">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <g class="theme-sun"><circle cx="10" cy="10" r="3.1"/><path d="M10 1.8v2.1m0 12.2v2.1M1.8 10h2.1m12.2 0h2.1M4.2 4.2l1.5 1.5m8.6 8.6 1.5 1.5m0-11.6-1.5 1.5m-8.6 8.6-1.5 1.5"/></g>
+            <path class="theme-moon" d="M16.8 12.4A7.2 7.2 0 0 1 7.6 3.2a7.3 7.3 0 1 0 9.2 9.2Z"/>
+          </svg>
+        </button>
         <a class="nav-download" href="https://bro.dajet.ru/Dajet.dmg">
           <span data-copy="ru">Скачать</span>
           <span data-copy="en">Download</span>
@@ -79,8 +86,8 @@
         </h1>
 
         <p class="hero-description">
-          <span data-copy="ru">Лёгкий браузер для macOS: чистый стартовый экран, локальная история и никакой телеметрии.</span>
-          <span data-copy="en">A lighter browser for macOS: a quiet start page, local history, and no telemetry.</span>
+          <span data-copy="ru">Лёгкий браузер для macOS: тёмный стартовый экран, локальная история и никакой телеметрии.</span>
+          <span data-copy="en">A lighter browser for macOS: a dark start page, local history, and no telemetry.</span>
         </p>
 
         <div class="hero-actions">
@@ -178,8 +185,8 @@
             <span data-copy="en">A quieter start.<br><em>A full-featured browser.</em></span>
           </h2>
           <p>
-            <span data-copy="ru">На новой вкладке — только поле ввода. Всё остальное появляется, когда нужно вам.</span>
-            <span data-copy="en">A new tab gives you one input line. Everything else is there when you need it.</span>
+            <span data-copy="ru">Стартовый экран тёмный и почти пустой: одна строка ввода, без ленты и промо.</span>
+            <span data-copy="en">The start page is dark and deliberately sparse: one input line, no feed or promos.</span>
           </p>
         </div>
       </div>
