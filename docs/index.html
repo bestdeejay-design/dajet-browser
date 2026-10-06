@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dajet — Silence, styled.</title>
-  <meta name="description" content="Минималистичный браузер для macOS. 7 MB, 0 запросов без твоего действия, 1 сек холодный старт. Никакой телеметрии, никакого облака.">
+  <title>Dajet — Молчит в сеть. Говорит стилем.</title>
+  <meta name="description" content="Минималистичный браузер для macOS. Тёмная тема по умолчанию. Только строка ввода. Ноль запросов без твоего действия.">
+  <meta name="theme-color" content="#171A1E">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Dajet — Silence, styled.">
-  <meta property="og:description" content="Минималистичный браузер для macOS. 7 MB, 0 запросов, 1 сек старт.">
+  <meta property="og:title" content="Dajet — Молчит в сеть. Говорит стилем.">
+  <meta property="og:description" content="Минималистичный браузер для macOS. Тёмная тема по умолчанию. Только строка ввода. Ноль запросов.">
   <meta property="og:image" content="assets/og-image.png">
   <meta property="og:url" content="https://bestdeejay-design.github.io/dajet-browser/">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dajet — Silence, styled.">
-  <meta name="twitter:description" content="Минималистичный браузер для macOS. 7 MB, 0 запросов, 1 сек старт.">
+  <meta name="twitter:title" content="Dajet — Молчит в сеть. Говорит стилем.">
+  <meta name="twitter:description" content="Минималистичный браузер для macOS. Тёмная тема по умолчанию. Только строка ввода. Ноль запросов.">
   <meta name="twitter:image" content="assets/og-image.png">
   
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
+  <!-- Theme Switcher -->
+  <button class="theme-switcher" id="themeSwitcher" aria-label="Переключить тему">
+    <span class="theme-icon">☾</span>
+  </button>
   
   <div class="container">
     
@@ -32,7 +38,7 @@
       
       <div class="stats">
         <div class="stat">
-          <div class="stat-value">7 MB</div>
+          <div class="stat-value">~6 MB</div>
           <div class="stat-label">весь браузер</div>
         </div>
         <div class="stat">
@@ -40,111 +46,86 @@
           <div class="stat-label">запросов без твоего действия</div>
         </div>
         <div class="stat">
-          <div class="stat-value">1 сек</div>
-          <div class="stat-label">холодный старт</div>
+          <div class="stat-value">1</div>
+          <div class="stat-label">строка ввода</div>
         </div>
       </div>
       
-      <img src="assets/hero.png" alt="Dajet browser" class="hero-image">
+      <div class="hero-description">
+        Ты открываешь Dajet. Тёмный экран. Часы. Дата. Одна строка ввода.<br>
+        Ничего больше. Это и есть браузер.
+      </div>
       
-      <div>
-        <a href="#" class="btn">Скачать для macOS</a>
-      </div>
-      <div class="hero-meta">
-        macOS 14+ · бесплатно · ~7 MB · Homebrew tap скоро
+      <div class="cta">
+        <a href="#" class="btn btn-primary">Скачать для macOS</a>
+        <div class="btn-meta">macOS 14+ · бесплатно · ~6 MB</div>
       </div>
     </section>
     
-    <!-- Три кита -->
-    <section>
-      <h2>Три кита</h2>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-icon">◯</div>
-          <div class="pillar-title">Минимализм</div>
-          <div class="pillar-desc">В интерфейсе, в весе, в памяти. Всё, что можно убрать, убрано.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">◉</div>
-          <div class="pillar-title">Тишина</div>
-          <div class="pillar-desc">Ноль сетевых запросов без действия пользователя. Проверяемо — открой Network Monitor.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon">◈</div>
-          <div class="pillar-title">Темы как искусство</div>
-          <div class="pillar-desc">Стартовый экран — галерея. Каждая тема — авторская работа с именем автора.</div>
-        </div>
+    <!-- Принцип -->
+    <section class="principle">
+      <h2>Принцип</h2>
+      <div class="principle-content">
+        <p>Dajet занимает позицию, которую большие браузеры не могут скопировать: <strong>дом, который молчит</strong>.</p>
+        <p class="highlight">Открой Network Monitor. Запусти Dajet. Ноль соединений.</p>
       </div>
     </section>
     
-    <!-- Фичи -->
-    <section>
-      <h2>Что умеет</h2>
-      <div class="features">
+    <!-- Стартовый экран -->
+    <section class="start-screen">
+      <h2>Стартовый экран</h2>
+      <div class="feature-grid">
         <div class="feature">
-          <div class="feature-icon">🔍</div>
-          <div class="feature-title">Одно поле</div>
-          <div class="feature-desc">Адрес — ты на странице. Слова — поиск. Подсказки только из твоей истории.</div>
+          <div class="feature-icon">🌙</div>
+          <div class="feature-title">Тёмная тема по умолчанию</div>
+          <div class="feature-desc">Мягкий тёмный фон. Никакого белого шума. Светлая тема — опционально.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">📑</div>
-          <div class="feature-title">Вкладки, которые не мешают</div>
-          <div class="feature-desc">Закрепи — сожмётся до иконки. Ленивая загрузка — 20 вкладок = мгновенный запуск.</div>
+          <div class="feature-icon">⏱️</div>
+          <div class="feature-title">Часы и дата</div>
+          <div class="feature-desc">Композиционный центр. Тонкая типографика. Никаких цифровых реклам.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">⬜️</div>
-          <div class="feature-title">Split View</div>
-          <div class="feature-desc">Две страницы рядом в одном окне. Двигай разделитель. Пары запоминаются.</div>
+          <div class="feature-icon">⌨️</div>
+          <div class="feature-title">Одна строка ввода</div>
+          <div class="feature-desc">Адрес или поиск. Подсказки из твоей истории. Ничего лишнего.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">🛡️</div>
-          <div class="feature-title">Блокировщик до рендера</div>
-          <div class="feature-desc">Трекеры и реклама останавливаются на уровне сети — нечему рендериться.</div>
+          <div class="feature-icon">📦</div>
+          <div class="feature-title">Виджеты (только локальные)</div>
+          <div class="feature-desc">Календарь, напоминания, таймер, батарея. Никогда не ходят в сеть.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">🙈</div>
-          <div class="feature-title">Скрой навсегда</div>
-          <div class="feature-desc">Cookie-баннер, newsletter, «похожее» — исчезает до того, как страница нарисовала фрейм.</div>
+          <div class="feature-icon">⚡️</div>
+          <div class="feature-title">Мгновенный рендер</div>
+          <div class="feature-desc">Никаких спиннеров. Никакого "загружаем конфиг". Сразу готов.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">🔐</div>
-          <div class="feature-title">Пароли в keychain</div>
-          <div class="feature-desc">macOS keychain, зашифровано системой. Импорт из Chrome, Arc, Brave — в один клик.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🧩</div>
-          <div class="feature-title">Chrome-расширения</div>
-          <div class="feature-desc">Без Chrome. Вставь ссылку Chrome Web Store — работает на WebKit, как Safari.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🎬</div>
-          <div class="feature-title">Видео идёт за тобой</div>
-          <div class="feature-desc">⌘⇧P — видео вынимается из страницы в маленькое окно поверх всего.</div>
+          <div class="feature-icon">🔇</div>
+          <div class="feature-title">Offline = Online</div>
+          <div class="feature-desc">Визуально неотличимо. В этом фишка.</div>
         </div>
       </div>
     </section>
     
-    <!-- Анти-канон -->
-    <section>
-      <div class="anti-canon">
-        <h2>Чего нет и не будет</h2>
-        <ul class="anti-list">
-          <li>Погода, новости, курсы валют на стартовом экране</li>
-          <li>AI-подсказки, «советы дня»</li>
-          <li>Аккаунты, облачная синхронизация</li>
-          <li>Телеметрия, аналитика, crash reports</li>
-          <li>Промо-плитки, платные места в быстрых ссылках</li>
-          <li>Онлайн-виджеты любой категории</li>
-        </ul>
-        <div class="anti-note">
-          Тишина — проверяемое заявление, а не обещание.<br>
-          Открой Network Monitor, запусти Dajet — ноль соединений.
-        </div>
+    <!-- Чего нет -->
+    <section class="anti-canon">
+      <h2>Чего нет и не будет</h2>
+      <ul class="anti-list">
+        <li>Погода, новости, курсы валют на стартовом экране</li>
+        <li>AI-подсказки, "советы дня", промо-плитки</li>
+        <li>Аккаунты, облачная синхронизация</li>
+        <li>Телеметрия, аналитика, crash reports</li>
+        <li>Онлайн-виджеты любой категории</li>
+      </ul>
+      <div class="anti-note">
+        Это не просто "пока не делаем". Это принципиальные нет.<br>
+        Если что-то из этого появляется — это баг, а не фича.
       </div>
     </section>
     
     <!-- Privacy -->
-    <section>
+    <section class="privacy">
       <h2>Privacy, конкретно</h2>
       <table class="privacy-table">
         <thead>
@@ -157,23 +138,18 @@
         <tbody>
           <tr>
             <td>Пароли</td>
-            <td>macOS login keychain, обычные keychain items с тегом Dajet</td>
-            <td>Dajet. Любое другое приложение вызывает системный диалог.</td>
+            <td>macOS login keychain</td>
+            <td>Dajet</td>
           </tr>
           <tr>
-            <td>История, закладки, вкладки</td>
+            <td>История, закладки</td>
             <td>JSON в ~/Library/Application Support/Dajet/</td>
-            <td>Ты.</td>
+            <td>Ты</td>
           </tr>
           <tr>
-            <td>Cookies и данные сайтов</td>
-            <td>Store WebKit для приложения</td>
-            <td>Сайты, как в любом браузере.</td>
-          </tr>
-          <tr>
-            <td>Расширения</td>
-            <td>~/Library/Application Support/Dajet/Extensions/</td>
-            <td>Каждое расширение, в пределах принятых разрешений.</td>
+            <td>Cookies</td>
+            <td>Store WebKit</td>
+            <td>Сайты</td>
           </tr>
           <tr>
             <td>Всё остальное</td>
@@ -184,13 +160,23 @@
       </table>
     </section>
     
-    <!-- Developers -->
+    <!-- Темы -->
+    <section class="themes">
+      <h2>Темы</h2>
+      <div class="themes-content">
+        <p>Каждая тема — авторская работа. Как постер. С именем автора.</p>
+        <p>Формат: <code>manifest.json</code> + <code>wallpapers/</code> + <code>theme.css</code> + <code>widgets.css</code>. Никакого кода — дизайнер не пишет JS.</p>
+        <p>Тема студии Dajet ("Dajet Quiet") — в комплекте. Бренд-темы под заказ — как услуга студии.</p>
+      </div>
+    </section>
+    
+    <!-- Код открыт -->
     <section class="developers">
       <h2>Код открыт</h2>
-      <p>
-        42 000 строк Swift, ноль зависимостей. Чтобы любой мог прочитать, что именно браузер, обрабатывающий его пароли и историю, делает. Собрать сам. Исправить то, что мешает.
-      </p>
-      <a href="https://github.com/bestdeejay-design/dajet-browser" class="btn btn-secondary">Читать код на GitHub</a>
+      <div class="developers-content">
+        <p>~42 000 строк Swift, ноль зависимостей. Чтобы любой мог прочитать, что именно браузер делает с его паролями и историей.</p>
+        <a href="https://github.com/bestdeejay-design/dajet-browser" class="btn btn-secondary">Читать код на GitHub</a>
+      </div>
     </section>
     
   </div>
@@ -198,14 +184,17 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <a href="https://dajet.ru">dajet.ru</a> ·
-      <a href="https://github.com/bestdeejay-design/dajet-browser">GitHub</a> ·
-      <a href="https://github.com/bestdeejay-design/dajet-browser/blob/main/LICENSE">MIT License</a>
-      <div style="margin-top: 1rem;">
+      <div class="footer-content">
+        <a href="https://dajet.ru">dajet.ru</a> ·
+        <a href="https://github.com/bestdeejay-design/dajet-browser">GitHub</a> ·
+        <a href="https://github.com/bestdeejay-design/dajet-browser/blob/main/LICENSE">MIT License</a>
+      </div>
+      <div class="footer-meta">
         Dajet — минималистичный браузер от дизайн-студии Dajet
       </div>
     </div>
   </footer>
   
+  <script src="script.js"></script>
 </body>
 </html>
