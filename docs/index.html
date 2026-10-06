@@ -4,37 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dajet — Молчит в сеть. Говорит стилем.</title>
-  <meta name="description" content="Минималистичный браузер для macOS. Тёмная тема по умолчанию. Только строка ввода. Ноль запросов без твоего действия.">
-  <meta name="theme-color" content="#171A1E">
+  <meta name="description" content="Чёрный экран. Строка ввода. Ничего больше. Минималистичный браузер для macOS.">
+  <meta name="theme-color" content="#000000">
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Dajet — Молчит в сеть. Говорит стилем.">
-  <meta property="og:description" content="Минималистичный браузер для macOS. Тёмная тема по умолчанию. Только строка ввода. Ноль запросов.">
+  <meta property="og:description" content="Чёрный экран. Строка ввода. Ничего больше.">
   <meta property="og:image" content="assets/og-image.png">
   <meta property="og:url" content="https://bestdeejay-design.github.io/dajet-browser/">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dajet — Молчит в сеть. Говорит стилем.">
-  <meta name="twitter:description" content="Минималистичный браузер для macOS. Тёмная тема по умолчанию. Только строка ввода. Ноль запросов.">
+  <meta name="twitter:description" content="Чёрный экран. Строка ввода. Ничего больше.">
   <meta name="twitter:image" content="assets/og-image.png">
   
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   
-  <!-- Theme Switcher -->
-  <button class="theme-switcher" id="themeSwitcher" aria-label="Переключить тему">
-    <span class="theme-icon">☾</span>
-  </button>
-  
-  <div class="container">
-    
-    <!-- Hero -->
-    <section class="hero">
+  <!-- Hero: чёрный экран + строка ввода -->
+  <section class="hero">
+    <div class="hero-content">
       <div class="logo">Dajet</div>
+      <div class="address-bar">
+        <div class="address-bar-inner">
+          <span class="address-placeholder">Введите адрес или слова для поиска</span>
+        </div>
+      </div>
       <div class="slogan">Молчит в сеть. Говорит стилем.</div>
+    </div>
+  </section>
+  
+  <!-- О проекте -->
+  <section class="about">
+    <div class="container">
+      <h2>Что это</h2>
+      <div class="about-content">
+        <p>Чёрный экран. Строка ввода. Ничего больше.</p>
+        <p>Ты открываешь Dajet — чёрный экран. Вводишь адрес — ты на странице. Вводишь слова — ты ищешь.</p>
+        <p>Нет часов. Нет даты. Нет виджетов. Нет "быстрых ссылок". Нет "рекомендаций". Нет ничего, что ты не попросил.</p>
+      </div>
       
       <div class="stats">
         <div class="stat">
@@ -46,87 +57,81 @@
           <div class="stat-label">запросов без твоего действия</div>
         </div>
         <div class="stat">
-          <div class="stat-value">1</div>
-          <div class="stat-label">строка ввода</div>
+          <div class="stat-value">∅</div>
+          <div class="stat-label">виджетов, часов, рекламы</div>
         </div>
       </div>
-      
-      <div class="hero-description">
-        Ты открываешь Dajet. Тёмный экран. Часы. Дата. Одна строка ввода.<br>
-        Ничего больше. Это и есть браузер.
-      </div>
-      
-      <div class="cta">
-        <a href="#" class="btn btn-primary">Скачать для macOS</a>
-        <div class="btn-meta">macOS 14+ · бесплатно · ~6 MB</div>
-      </div>
-    </section>
-    
-    <!-- Принцип -->
-    <section class="principle">
+    </div>
+  </section>
+  
+  <!-- Принцип -->
+  <section class="principle">
+    <div class="container">
       <h2>Принцип</h2>
       <div class="principle-content">
-        <p>Dajet занимает позицию, которую большие браузеры не могут скопировать: <strong>дом, который молчит</strong>.</p>
         <p class="highlight">Открой Network Monitor. Запусти Dajet. Ноль соединений.</p>
+        <p>Dajet занимает позицию, которую большие браузеры не могут скопировать: <strong>экран, который ждёт тебя</strong>. Не отвлекает. Не предлагает. Не советует.</p>
       </div>
-    </section>
-    
-    <!-- Стартовый экран -->
-    <section class="start-screen">
-      <h2>Стартовый экран</h2>
+      
+      <div class="anti-list">
+        <div class="anti-title">Чего нет и не будет:</div>
+        <ul>
+          <li>Часы, дата на стартовом экране</li>
+          <li>Виджеты любой категории</li>
+          <li>Погода, новости, курсы валют</li>
+          <li>AI-подсказки, "советы дня"</li>
+          <li>Аккаунты, облачная синхронизация</li>
+          <li>Телеметрия, аналитика, реклама</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Когда ты на странице -->
+  <section class="features">
+    <div class="container">
+      <h2>Когда ты на странице</h2>
+      <p class="section-intro">Стартовый экран — это пауза. Чёрная тишина перед действием. Но когда ты на странице — вот что есть:</p>
+      
       <div class="feature-grid">
         <div class="feature">
-          <div class="feature-icon">🌙</div>
-          <div class="feature-title">Тёмная тема по умолчанию</div>
-          <div class="feature-desc">Мягкий тёмный фон. Никакого белого шума. Светлая тема — опционально.</div>
+          <div class="feature-icon">🔍</div>
+          <div class="feature-title">Одна строка</div>
+          <div class="feature-desc">Адрес или поиск. Подсказки из твоей истории.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">⏱️</div>
-          <div class="feature-title">Часы и дата</div>
-          <div class="feature-desc">Композиционный центр. Тонкая типографика. Никаких цифровых реклам.</div>
+          <div class="feature-icon">📑</div>
+          <div class="feature-title">Вкладки</div>
+          <div class="feature-desc">⌘T новая, ⌘W закрыть, ⇧⌘[ ⇧⌘] переключить.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">⌨️</div>
-          <div class="feature-title">Одна строка ввода</div>
-          <div class="feature-desc">Адрес или поиск. Подсказки из твоей истории. Ничего лишнего.</div>
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Блокировщик рекламы</div>
+          <div class="feature-desc">На уровне сети, до рендера.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">📦</div>
-          <div class="feature-title">Виджеты (только локальные)</div>
-          <div class="feature-desc">Календарь, напоминания, таймер, батарея. Никогда не ходят в сеть.</div>
+          <div class="feature-icon">🙈</div>
+          <div class="feature-title">Скрой навсегда</div>
+          <div class="feature-desc">⇧⌘H — cookie-баннер исчезает навсегда.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">⚡️</div>
-          <div class="feature-title">Мгновенный рендер</div>
-          <div class="feature-desc">Никаких спиннеров. Никакого "загружаем конфиг". Сразу готов.</div>
+          <div class="feature-icon">🔐</div>
+          <div class="feature-title">Пароли в keychain</div>
+          <div class="feature-desc">macOS keychain, зашифровано системой.</div>
         </div>
         <div class="feature">
-          <div class="feature-icon">🔇</div>
-          <div class="feature-title">Offline = Online</div>
-          <div class="feature-desc">Визуально неотличимо. В этом фишка.</div>
+          <div class="feature-icon">🧩</div>
+          <div class="feature-title">Chrome-расширения</div>
+          <div class="feature-desc">Вставь ссылку Chrome Web Store — работает.</div>
         </div>
       </div>
-    </section>
-    
-    <!-- Чего нет -->
-    <section class="anti-canon">
-      <h2>Чего нет и не будет</h2>
-      <ul class="anti-list">
-        <li>Погода, новости, курсы валют на стартовом экране</li>
-        <li>AI-подсказки, "советы дня", промо-плитки</li>
-        <li>Аккаунты, облачная синхронизация</li>
-        <li>Телеметрия, аналитика, crash reports</li>
-        <li>Онлайн-виджеты любой категории</li>
-      </ul>
-      <div class="anti-note">
-        Это не просто "пока не делаем". Это принципиальные нет.<br>
-        Если что-то из этого появляется — это баг, а не фича.
-      </div>
-    </section>
-    
-    <!-- Privacy -->
-    <section class="privacy">
-      <h2>Privacy, конкретно</h2>
+    </div>
+  </section>
+  
+  <!-- Privacy -->
+  <section class="privacy">
+    <div class="container">
+      <h2>Privacy</h2>
       <table class="privacy-table">
         <thead>
           <tr>
@@ -158,28 +163,20 @@
           </tr>
         </tbody>
       </table>
-    </section>
-    
-    <!-- Темы -->
-    <section class="themes">
-      <h2>Темы</h2>
-      <div class="themes-content">
-        <p>Каждая тема — авторская работа. Как постер. С именем автора.</p>
-        <p>Формат: <code>manifest.json</code> + <code>wallpapers/</code> + <code>theme.css</code> + <code>widgets.css</code>. Никакого кода — дизайнер не пишет JS.</p>
-        <p>Тема студии Dajet ("Dajet Quiet") — в комплекте. Бренд-темы под заказ — как услуга студии.</p>
+    </div>
+  </section>
+  
+  <!-- Скачать -->
+  <section class="download">
+    <div class="container">
+      <h2>Установить</h2>
+      <div class="download-content">
+        <p>macOS 14+ · бесплатно · ~6 MB</p>
+        <a href="#" class="btn btn-primary">Скачать для macOS</a>
+        <p class="download-alt">или <a href="https://github.com/bestdeejay-design/dajet-browser">собери сам</a></p>
       </div>
-    </section>
-    
-    <!-- Код открыт -->
-    <section class="developers">
-      <h2>Код открыт</h2>
-      <div class="developers-content">
-        <p>~42 000 строк Swift, ноль зависимостей. Чтобы любой мог прочитать, что именно браузер делает с его паролями и историей.</p>
-        <a href="https://github.com/bestdeejay-design/dajet-browser" class="btn btn-secondary">Читать код на GitHub</a>
-      </div>
-    </section>
-    
-  </div>
+    </div>
+  </section>
   
   <!-- Footer -->
   <footer>
@@ -195,6 +192,5 @@
     </div>
   </footer>
   
-  <script src="script.js"></script>
 </body>
 </html>
