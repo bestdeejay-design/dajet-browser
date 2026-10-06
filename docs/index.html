@@ -1,190 +1,336 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru" data-locale="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dajet — Silence, styled.</title>
-  <meta name="description" content="A minimal browser for macOS. Dark by default. One input line. Zero requests without your action.">
-  <meta name="theme-color" content="#171A1E">
-  
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Dajet — Silence, styled.">
-  <meta property="og:description" content="A minimal browser for macOS. Dark by default. One input line. Zero requests.">
-  <meta property="og:image" content="assets/og-image.png">
-  <meta property="og:url" content="https://bro.dajet.ru/">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dajet — Silence, styled.">
-  <meta name="twitter:description" content="A minimal browser for macOS. Dark by default. One input line. Zero requests.">
-  <meta name="twitter:image" content="assets/og-image.png">
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ee">
+  <meta name="description" content="Лёгкий браузер для macOS. Чистый стартовый экран, локальная история и никакой телеметрии.">
+  <meta name="color-scheme" content="light">
+
+  <title>Dajet — браузер для тихого интернета</title>
+  <link rel="canonical" href="https://bro.dajet.ru/">
+  <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
   <link rel="stylesheet" href="style.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dajet">
+  <meta property="og:title" content="Dajet — браузер для тихого интернета">
+  <meta property="og:description" content="Лёгкий браузер для macOS. Чистый стартовый экран, локальная история и никакой телеметрии.">
+  <meta property="og:url" content="https://bro.dajet.ru/">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://bro.dajet.ru/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dajet — браузер для тихого интернета">
+  <meta name="twitter:description" content="Лёгкий браузер для macOS. Чистый стартовый экран, локальная история и никакой телеметрии.">
+  <meta name="twitter:image" content="https://bro.dajet.ru/assets/og-image.png">
 </head>
 <body>
-  
-  <!-- Theme Switcher -->
-  <button class="theme-switcher" id="themeSwitcher" aria-label="Toggle theme">
-    <span class="theme-icon">☾</span>
-  </button>
-  
-  <div class="container">
-    
-    <!-- Hero -->
-    <section class="hero">
-      <div class="logo">Dajet</div>
-      <div class="slogan">Silence, styled.</div>
-      
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-value">~6 MB</div>
-          <div class="stat-label">the whole browser</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">0</div>
-          <div class="stat-label">requests without your action</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">1</div>
-          <div class="stat-label">input line</div>
-        </div>
+  <a class="skip-link" href="#main">
+    <span data-copy="ru">К содержимому</span>
+    <span data-copy="en">Skip to content</span>
+  </a>
+
+  <header class="site-header">
+    <nav class="navigation page-width" aria-label="Основная навигация">
+      <a class="brand" href="#top" aria-label="Dajet — на главную">
+        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <path fill="currentColor" fill-rule="evenodd" d="M12.5 12.5H48C71.2 12.5 87.5 27.4 87.5 50S71.2 87.5 48 87.5H12.5V12.5Zm19 18.5v38H48c11.9 0 20.5-6.4 20.5-19S59.9 31 48 31H31.5Z"/>
+        </svg>
+        <span class="brand-name">Dajet</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#features"><span data-copy="ru">Возможности</span><span data-copy="en">Features</span></a>
+        <a href="#privacy"><span data-copy="ru">Приватность</span><span data-copy="en">Privacy</span></a>
+        <a href="#open-source"><span data-copy="ru">Исходный код</span><span data-copy="en">Open source</span></a>
       </div>
-      
-      <div class="hero-description">
-        You open Dajet. A black screen. One input line.<br>
-        Nothing else. That is the browser.
+
+      <div class="nav-actions">
+        <div class="locale-switch" data-locale-switch role="group" aria-label="Выбрать язык">
+          <button type="button" data-locale-choice="ru" aria-pressed="true">RU</button>
+          <button type="button" data-locale-choice="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="nav-download" href="https://bro.dajet.ru/Dajet.dmg">
+          <span data-copy="ru">Скачать</span>
+          <span data-copy="en">Download</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8h9m-4-4 4 4-4 4"/></svg>
+        </a>
       </div>
-      
-      <div class="cta">
-        <a href="#" class="btn btn-primary">Download for macOS</a>
-        <div class="btn-meta">macOS 14+ · free · ~7 MB</div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero page-width" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow hero-eyebrow">
+          <span class="eyebrow-rule" aria-hidden="true"></span>
+          <span data-copy="ru">БРАУЗЕР ДЛЯ macOS</span>
+          <span data-copy="en">A BROWSER FOR macOS</span>
+          <span class="eyebrow-note">WEBKIT&nbsp; · &nbsp;MAC</span>
+        </div>
+
+        <h1 id="hero-title">
+          <span data-copy="ru">Молчит в сеть.<br><em>Говорит стилем.</em></span>
+          <span data-copy="en">Silence,<br><em>styled.</em></span>
+        </h1>
+
+        <p class="hero-description">
+          <span data-copy="ru">Лёгкий браузер для macOS: чистый стартовый экран, локальная история и никакой телеметрии.</span>
+          <span data-copy="en">A lighter browser for macOS: a quiet start page, local history, and no telemetry.</span>
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://bro.dajet.ru/Dajet.dmg">
+            <span data-copy="ru">Скачать Dajet</span>
+            <span data-copy="en">Download Dajet</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.75v9.5m0 0 3.6-3.6M10 12.25l-3.6-3.6M4 14.75v2.5h12v-2.5"/></svg>
+          </a>
+          <a class="text-link" href="#features">
+            <span data-copy="ru">Знакомство с браузером</span>
+            <span data-copy="en">Meet the browser</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9m-4-4 4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <p class="hero-meta">
+          <span data-copy="ru">macOS 14+ <i aria-hidden="true">·</i> Apple silicon <i aria-hidden="true">·</i> приложение ≈7 МБ <i aria-hidden="true">·</i> бесплатно</span>
+          <span data-copy="en">macOS 14+ <i aria-hidden="true">·</i> Apple silicon <i aria-hidden="true">·</i> app ~7 MB <i aria-hidden="true">·</i> free</span>
+        </p>
+      </div>
+
+      <figure class="product-figure">
+        <svg class="figure-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <path fill="currentColor" fill-rule="evenodd" d="M12.5 12.5H48C71.2 12.5 87.5 27.4 87.5 50S71.2 87.5 48 87.5H12.5V12.5Zm19 18.5v38H48c11.9 0 20.5-6.4 20.5-19S59.9 31 48 31H31.5Z"/>
+        </svg>
+        <div class="figure-heading">
+          <span class="figure-label">
+            <span data-copy="ru">НОВАЯ ВКЛАДКА</span>
+            <span data-copy="en">A NEW TAB</span>
+          </span>
+          <span class="figure-status"><span class="status-dot" aria-hidden="true"></span><span data-copy="ru">БЕЗ ЛЕНТЫ</span><span data-copy="en">NO FEED</span></span>
+        </div>
+        <div class="screen-shell">
+          <img
+            class="start-screen"
+            src="assets/start-screen.png"
+            alt="Чёрный стартовый экран Dajet с одной строкой ввода в центре."
+            width="1600"
+            height="1000"
+            fetchpriority="high"
+          >
+        </div>
+        <figcaption class="figure-caption">
+          <span data-copy="ru">Одна строка. Ничего лишнего.</span>
+          <span data-copy="en">One line. Nothing in the way.</span>
+          <span class="caption-index">01 / 01</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="quiet-proof" aria-labelledby="proof-title">
+      <div class="page-width proof-layout">
+        <div class="proof-measure">
+          <span class="proof-zero">0</span>
+          <span class="proof-measure-label">
+          <span data-copy="ru">фоновых запросов<br>со стороны Dajet</span>
+          <span data-copy="en">background requests<br>by Dajet</span>
+          </span>
+        </div>
+        <div class="proof-explanation">
+          <p class="eyebrow"><span data-copy="ru">ТИШИНА — ЭТО НАСТРОЙКА ПО УМОЛЧАНИЮ</span><span data-copy="en">QUIET BY DEFAULT</span></p>
+          <h2 id="proof-title">
+            <span data-copy="ru">Сеть — только<br>по вашему действию.</span>
+            <span data-copy="en">Online, only<br>when you ask.</span>
+          </h2>
+          <p>
+            <span data-copy="ru">Стартовая страница работает локально. Dajet не отправляет телеметрию и не проверяет обновления в фоне.</span>
+            <span data-copy="en">The start page is local. Dajet sends no telemetry and never checks for updates in the background.</span>
+          </p>
+          <a class="text-link proof-link" href="#privacy">
+            <span data-copy="ru">Как это устроено</span>
+            <span data-copy="en">How it works</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9m-4-4 4 4-4 4"/></svg>
+          </a>
+        </div>
+        <div class="proof-status" aria-hidden="true">
+          <span class="status-ring"><span></span></span>
+          <span class="proof-status-title">NETWORK</span>
+          <span class="proof-status-value">QUIET</span>
+          <span class="proof-status-foot"><span data-copy="ru">БЕЗ ФОНОВЫХ ПРОВЕРОК</span><span data-copy="en">NO BACKGROUND CHECKS</span></span>
+        </div>
       </div>
     </section>
-    
-    <!-- Principle -->
-    <section class="principle">
-      <h2>Principle</h2>
-      <div class="principle-content">
-        <p>Dajet holds a position big browsers cannot copy: <strong>a home that stays silent</strong>.</p>
-        <p class="highlight">Open a network monitor. Launch Dajet. Zero connections.</p>
-      </div>
-    </section>
-    
-    <!-- Start screen -->
-    <section class="start-screen">
-      <h2>Start screen</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <div class="feature-icon">🌙</div>
-          <div class="feature-title">Dark by default</div>
-          <div class="feature-desc">A soft dark field. No white noise. Light theme optional.</div>
+
+    <section class="features page-width" id="features" aria-labelledby="features-title">
+      <div class="section-intro">
+        <div class="section-index">
+          <span class="eyebrow-number">01</span>
+          <span data-copy="ru">ПРОДУМАННЫЙ МИНИМУМ</span>
+          <span data-copy="en">THE THOUGHTFUL ESSENTIALS</span>
         </div>
-        <div class="feature">
-          <div class="feature-icon">⌨️</div>
-          <div class="feature-title">One input line</div>
-          <div class="feature-desc">Address or search. Suggestions from your history. Nothing extra.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">⚡️</div>
-          <div class="feature-title">Instant render</div>
-          <div class="feature-desc">No spinners. No “loading your config”. Ready at once.</div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🔇</div>
-          <div class="feature-title">Offline = online</div>
-          <div class="feature-desc">Visually identical. That is the trick.</div>
+        <div class="section-title-group">
+          <h2 id="features-title">
+            <span data-copy="ru">Чистый старт.<br><em>Полноценный браузер.</em></span>
+            <span data-copy="en">A quieter start.<br><em>A full-featured browser.</em></span>
+          </h2>
+          <p>
+            <span data-copy="ru">На новой вкладке — только поле ввода. Всё остальное появляется, когда нужно вам.</span>
+            <span data-copy="en">A new tab gives you one input line. Everything else is there when you need it.</span>
+          </p>
         </div>
       </div>
-    </section>
-    
-    <!-- What is missing -->
-    <section class="anti-canon">
-      <h2>What is missing — on purpose</h2>
-      <ul class="anti-list">
-        <li>Weather, news, exchange rates on the start screen</li>
-        <li>AI suggestions, “tips of the day”, promo tiles</li>
-        <li>Accounts, cloud sync</li>
-        <li>Telemetry, analytics, crash reports</li>
-        <li>Online widgets of any category</li>
-      </ul>
-      <div class="anti-note">
-        This is not “not yet”. These are principled noes.<br>
-        If any of this shows up — that is a bug, not a feature.
+
+      <div class="feature-list">
+        <article class="feature-row">
+          <span class="feature-number">01</span>
+          <h3><span data-copy="ru">Адрес или поиск</span><span data-copy="en">Address or search</span></h3>
+          <p>
+            <span data-copy="ru">Одна строка понимает и URL, и запрос. Подсказки берутся из истории и закладок на этом Mac.</span>
+            <span data-copy="en">One line handles URLs and searches. Suggestions come from history and bookmarks on this Mac.</span>
+          </p>
+          <span class="feature-mark" aria-hidden="true">⌘ L</span>
+        </article>
+        <article class="feature-row">
+          <span class="feature-number">02</span>
+          <h3><span data-copy="ru">Вкладки под контролем</span><span data-copy="en">Tabs, your way</span></h3>
+          <p>
+            <span data-copy="ru">Закрепляйте важное, переключайтесь между недавними страницами или работайте в Split View.</span>
+            <span data-copy="en">Pin what matters, revisit recent pages, or put two sites side by side with Split View.</span>
+          </p>
+          <span class="feature-mark" aria-hidden="true">⌥⌘ N</span>
+        </article>
+        <article class="feature-row">
+          <span class="feature-number">03</span>
+          <h3><span data-copy="ru">Веб без лишнего шума</span><span data-copy="en">Less noise on the web</span></h3>
+          <p>
+            <span data-copy="ru">Встроенный блокировщик рекламы, режим чтения и плавающее видео — когда они действительно нужны.</span>
+            <span data-copy="en">An ad blocker, Reader mode, and floating video — ready when you actually need them.</span>
+          </p>
+          <span class="feature-mark" aria-hidden="true">⇧⌘ R</span>
+        </article>
+        <article class="feature-row">
+          <span class="feature-number">04</span>
+          <h3><span data-copy="ru">Привычные расширения</span><span data-copy="en">Your familiar extensions</span></h3>
+          <p>
+            <span data-copy="ru">Расширения из Chrome Web Store работают в Dajet на macOS 15.4 и новее.</span>
+            <span data-copy="en">Chrome Web Store extensions work in Dajet on macOS 15.4 and later.</span>
+          </p>
+          <span class="feature-mark" aria-hidden="true">WEB EXTENSIONS</span>
+        </article>
       </div>
     </section>
-    
-    <!-- Privacy -->
-    <section class="privacy">
-      <h2>Privacy, concretely</h2>
-      <table class="privacy-table">
-        <thead>
-          <tr>
-            <th>What</th>
-            <th>Where</th>
-            <th>Who can read it</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Passwords</td>
-            <td>macOS login keychain</td>
-            <td>Dajet</td>
-          </tr>
-          <tr>
-            <td>History, bookmarks</td>
-            <td>JSON in ~/Library/Application Support/Dajet/</td>
-            <td>You</td>
-          </tr>
-          <tr>
-            <td>Cookies</td>
-            <td>WebKit store</td>
-            <td>Sites</td>
-          </tr>
-          <tr>
-            <td>Everything else</td>
-            <td>Nowhere. There is no server.</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    
-    <!-- Themes -->
-    <section class="themes">
-      <h2>Themes</h2>
-      <div class="themes-content">
-        <p>Every theme is an authored work. Like a poster. With the author’s name.</p>
-        <p>Format: <code>manifest.json</code> + <code>wallpapers/</code> + <code>theme.css</code> + <code>widgets.css</code>. No code — designers don’t write JS.</p>
-        <p>The Dajet studio theme (“Dajet Quiet”) ships inside. Branded themes on commission — a studio service.</p>
+
+    <section class="privacy-section" id="privacy" aria-labelledby="privacy-title">
+      <div class="page-width privacy-inner">
+        <div class="privacy-overline">
+          <span class="eyebrow-number">02</span>
+          <span data-copy="ru">ПРИВАТНОСТЬ — НЕ ОПЦИЯ</span>
+          <span data-copy="en">PRIVACY ISN’T AN EXTRA</span>
+          <span class="privacy-overline-note"><span data-copy="ru">ПРОВЕРЯЕМО</span><span data-copy="en">VERIFIABLE</span></span>
+        </div>
+
+        <div class="privacy-grid">
+          <div class="privacy-copy">
+            <h2 id="privacy-title">
+              <span data-copy="ru">Ваши данные.<br><em>Ваш компьютер.</em></span>
+              <span data-copy="en">Your data.<br><em>Your Mac.</em></span>
+            </h2>
+            <p>
+              <span data-copy="ru">У Dajet нет собственного аккаунта и облачной синхронизации. Браузер не собирает телеметрию: история, закладки и пароли остаются на устройстве.</span>
+              <span data-copy="en">Dajet has no account of its own and no cloud sync. It collects no telemetry: your history, bookmarks, and passwords stay on your device.</span>
+            </p>
+            <a class="privacy-source-link" href="https://github.com/bestdeejay-design/dajet-browser">
+              <span data-copy="ru">Проверить исходный код</span>
+              <span data-copy="en">Inspect the source</span>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5 4.5h6.5V11"/></svg>
+            </a>
+          </div>
+
+          <dl class="privacy-ledger">
+            <div class="privacy-row">
+              <dt><span data-copy="ru">История и закладки</span><span data-copy="en">History & bookmarks</span></dt>
+              <dd><span data-copy="ru">На этом Mac</span><span data-copy="en">On this Mac</span></dd>
+            </div>
+            <div class="privacy-row">
+              <dt><span data-copy="ru">Пароли</span><span data-copy="en">Passwords</span></dt>
+              <dd><span data-copy="ru">Связка ключей macOS</span><span data-copy="en">macOS Keychain</span></dd>
+            </div>
+            <div class="privacy-row">
+              <dt><span data-copy="ru">Телеметрия</span><span data-copy="en">Telemetry</span></dt>
+              <dd class="value-no"><span data-copy="ru">Не собирается</span><span data-copy="en">Not collected</span></dd>
+            </div>
+            <div class="privacy-row">
+              <dt><span data-copy="ru">Обновления</span><span data-copy="en">Updates</span></dt>
+              <dd><span data-copy="ru">По вашему запросу</span><span data-copy="en">Only when requested</span></dd>
+            </div>
+          </dl>
+        </div>
+
+        <p class="privacy-footnote">
+          <span data-copy="ru">Cookies хранятся в WebKit и доступны посещаемым сайтам. История и закладки сохраняются локально: <code>~/Library/Application Support/Dajet/</code>.</span>
+          <span data-copy="en">Cookies live in WebKit and are available to the sites you visit. History and bookmarks are stored locally at <code>~/Library/Application Support/Dajet/</code>.</span>
+        </p>
       </div>
     </section>
-    
-    <!-- Open code -->
-    <section class="developers">
-      <h2>Open code</h2>
-      <div class="developers-content">
-        <p>~42,000 lines of Swift, zero dependencies. So anyone can read exactly what the browser does with their passwords and history.</p>
-        <a href="https://github.com/bestdeejay-design/dajet-browser" class="btn btn-secondary">Read the code on GitHub</a>
+
+    <section class="open-source page-width" id="open-source" aria-labelledby="source-title">
+      <div class="source-heading">
+        <div class="section-index">
+          <span class="eyebrow-number">03</span>
+          <span data-copy="ru">ОТКРЫТЫЙ КОД</span>
+          <span data-copy="en">OPEN SOURCE</span>
+        </div>
+        <h2 id="source-title">
+          <span data-copy="ru">Не просим<br>верить на слово.</span>
+          <span data-copy="en">No need<br>to take our word.</span>
+        </h2>
+      </div>
+      <div class="source-copy">
+        <p>
+          <span data-copy="ru">Исходный код Dajet открыт. Это форк браузера Search, распространяемый по лицензии MIT. Посмотрите, как всё устроено — и решите сами.</span>
+          <span data-copy="en">Dajet’s source is open. It’s a fork of Search, released under the MIT License. See how it works, then decide for yourself.</span>
+        </p>
+        <a class="source-link" href="https://github.com/bestdeejay-design/dajet-browser">
+          <span data-copy="ru">Открыть репозиторий на GitHub</span>
+          <span data-copy="en">Explore the code on GitHub</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5 4.5h6.5V11"/></svg>
+        </a>
+        <p class="source-attribution">
+          <span data-copy="ru">Форк Search от Office Commun · MIT License</span>
+          <span data-copy="en">Fork of Search by Office Commun · MIT License</span>
+        </p>
       </div>
     </section>
-    
-  </div>
-  
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <a href="https://dajet.ru">dajet.ru</a> ·
-        <a href="https://github.com/bestdeejay-design/dajet-browser">GitHub</a> ·
-        <a href="https://github.com/bestdeejay-design/dajet-browser/blob/main/LICENSE">MIT License</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-width footer-inner">
+      <a class="brand footer-brand" href="#top" aria-label="Dajet — на главную">
+        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <path fill="currentColor" fill-rule="evenodd" d="M12.5 12.5H48C71.2 12.5 87.5 27.4 87.5 50S71.2 87.5 48 87.5H12.5V12.5Zm19 18.5v38H48c11.9 0 20.5-6.4 20.5-19S59.9 31 48 31H31.5Z"/>
+        </svg>
+        <span class="brand-name">Dajet</span>
+      </a>
+      <p class="footer-legal">
+        <span data-copy="ru">Форк Search от Office Commun. Лицензия MIT.</span>
+        <span data-copy="en">A fork of Search by Office Commun. MIT License.</span>
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/bestdeejay-design/dajet-browser">GitHub</a>
+        <a href="https://dajet.ru">Dajet Studio</a>
+        <a href="https://github.com/bestdeejay-design/dajet-browser/blob/main/LICENSE">
+          <span data-copy="ru">Лицензия</span>
+          <span data-copy="en">License</span>
+        </a>
       </div>
-      <div class="footer-meta">
-        Dajet — a minimal browser by the Dajet design studio
-      </div>
+      <a class="back-to-top" href="#top" aria-label="Наверх"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12.5v-9m0 0-4 4m4-4 4 4"/></svg></a>
     </div>
   </footer>
-  
-  <script src="script.js"></script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
