@@ -1,127 +1,141 @@
 # Dajet
 
-*Silence, styled.* A small, fast, quiet web browser for the Mac.
+Молчит в сеть. Говорит стилем.
 
-Forked from [Search by Office Commun](https://github.com/driceroland/Search) (MIT) and renamed, as its license asks.
+**~6 MB** · macOS 14+ · WebKit · бесплатно · тёмная тема по умолчанию
 
-![Dajet, with its tabs down the left and a page taking the rest of the window](.github/screenshot.png)
-
-**[dajet.ru/browser](https://dajet.ru/browser)** · macOS 14 or later · free · about 7 MB
-
-Or build it yourself (see below). A Homebrew tap arrives with the first signed release.
+![Dajet browser — тёмный стартовый экран с одной строкой ввода](.github/screenshot.png)
 
 ---
 
-## What it is
+## Что это
 
-Dajet is a browser with nothing in the way. A row of tabs — across the top or down the left, your choice — and the page. There is no toolbar, no start page, no sidebar of suggestions, no account to sign into, nothing that wants your attention. You type an address or a few words in one field and you are on the page.
+Ты открываешь Dajet. Тёмный экран. Часы. Дата. Одна строка ввода. Ничего больше.
 
-It uses **WebKit**, the engine already inside every Mac (it is what Safari runs on). That is why the whole app is about 3 MB on disk and opens instantly: there is no second copy of Chromium to download, update and keep in memory.
+Это и есть браузер. Никаких боковых меню. Никаких вкладок, которые на тебя смотрят. Никаких "советов дня" и промо-плиток. Ты вводишь адрес — ты на странице. Ты вводишь слова — ты ищешь.
 
-It was built by a design studio that spends its whole day in a browser and was tired of the ones that had become products. This one is a tool.
+Всё.
 
-## What it does
+## Принцип
 
-- **One field.** Type an address and you go there; type words and you search. It finishes addresses from your own history and never sends what you type anywhere until you press Return.
-- **Tabs that stay out of the way.** Pin the pages you keep open all day and they shrink to a letter or their icon. Tabs from your last session come back instantly and cost nothing until you click them. `⌘K` lists your open tabs by name.
-- **Two pages side by side.** Turn on Split View in Settings › Tabs, then drag a tab onto a page or choose Tabs › Split Current Page. Drag the divider to resize the panes; the outlined pane receives page commands. Pairs and their widths come back with their Space, including after a restart.
-- **Reading mode.** `⇧⌘R` strips a page down to the article.
-- **Hide anything, for good.** `⇧⌘H`, then click a cookie banner, a newsletter overlay, a rail of "related" nonsense — it goes, and it is still gone on that site next time, before the page has drawn a single frame.
-- **An ad blocker that runs before the page.** Third-party trackers and ad networks are stopped at the network level, so there is nothing to render and nothing to slow down. On by default, off per site if something breaks.
-- **Video that follows you.** `⇧⌘P` lifts the video out of the page into a small window that stays above everything, including other apps.
-- **Passwords, in your keychain.** Dajet offers to save a sign-in once it has actually worked, and offers your saved accounts, and the Mac's passkeys for the site, under the field when you click it — the way Safari does, never filling anything on its own. Everything lives in the macOS keychain, encrypted by the system, readable only by Dajet. Bring yours in from Chrome, Arc, Dia, Brave or Edge in one click; nothing leaves the Mac.
-- **Light, dark, or the Mac's own.** The frame and the pages follow.
-- **Bookmarks, history, downloads** — each a panel, each searchable, each one keystroke away.
-- **Chrome extensions, without Chrome.** Paste a Chrome Web Store link in Settings › Extensions, or open the extension's page in Dajet and press Add. It runs on WebKit's own extension engine — the one Safari uses — and where Chrome has APIs WebKit doesn't (bookmarks, history, downloads, side panel, offscreen documents, fonts, notifications, speech, OAuth sign-in), Dajet fills them in itself. They live behind the puzzle button; pin the ones you use often. Building your own? Load its folder as an unpacked extension and press Reload after each change, as in Chrome's developer mode. macOS 15.4 or later.
-- **Updates only when asked.** Dajet › Check for Updates… looks once, downloads the newer build, verifies its signature, and swaps it in for the next launch. Nothing checks on its own, nothing restarts on its own.
+Dajet занимает позицию, которую большие браузеры не могут скопировать: **дом, который молчит**.
 
-## What it doesn't do
+Открой Network Monitor. Запусти Dajet. Ноль соединений. Без твоего действия — ничего не уходит в сеть. Это не обещание. Это проверяемое заявление.
 
-On purpose:
+- Нет телеметрии
+- Нет аккаунтов
+- Нет облака
+- Нет рекламы
+- Нет "онлайн-виджетов" (погода, новости, курсы)
 
-- No extension you have to install to feel at home. Blocking ads, hiding clutter, reading mode, picture-in-picture and passwords are built in; extensions are there for everything else.
-- No sync, no account, no cloud. Your tabs, history and passwords are on your Mac and nowhere else.
-- No telemetry, no analytics, no crash reports sent anywhere. The only things that leave your Mac are the pages you ask for and their icons.
-- One window. Tabs are the only kind of "new" there is.
+## Что умеет
 
-## Privacy, concretely
+Когда ты на странице:
 
-| What | Where it is | Who can read it |
+- **Одна строка ввода** — адрес или поиск. Подсказки из твоей истории
+- **Вкладки** — `⌘T` новая, `⌘W` закрыть, `⇧⌘[` `⇧⌘]` переключить. Сверху или слева (`⇧⌘S`)
+- **Закреплённые вкладки** — сожмутся до иконки, не мешают
+- **Split View** — две страницы рядом (`⌥⌘N`)
+- **Блокировщик рекламы** — на уровне сети, до рендера
+- **Скрой элемент навсегда** — `⇧⌘H`, кликни на cookie-баннер
+- **Режим чтения** — `⇧⌘R`
+- **Плавающее видео** — `⇧⌘P`
+- **Пароли в macOS keychain** — зашифровано системой
+- **Chrome-расширения** — вставь ссылку Chrome Web Store (macOS 15.4+)
+- **Обновления только по запросу** — ничего не проверяется само
+
+## Стартовый экран
+
+Когда ты открываешь новую вкладку или запускаешь браузер:
+
+- Тёмный экран (тёмная тема по умолчанию)
+- Часы и дата — композиционный центр
+- Одна строка ввода адреса/поиска
+- Настраиваемая сетка виджетов (только локальные)
+- Быстрые ссылки
+
+**Рендер мгновенный.** Никаких спиннеров, никакого "загружаем конфиг". Ни одного сетевого запроса.
+
+Offline визуально неотличим от online. В этом фишка.
+
+## Виджеты (только локальные)
+
+Работают на ресурсах машины. Никогда не ходят в сеть.
+
+- Часы/дата
+- Календарь (EventKit)
+- Напоминания (EventKit)
+- Таймер/помодоро
+- Батарея и система (IOKit)
+- "Сейчас играет" (Now Playing)
+- Заметки (локальный файл)
+- Быстрые ссылки (профиль)
+
+## Темы
+
+Каждая тема — авторская работа. Как постер. С именем автора.
+
+Формат: `manifest.json` + `wallpapers/` + `theme.css` + `widgets.css`. Никакого кода — дизайнер не пишет JS.
+
+Тема студии Dajet ("Dajet Quiet") — в комплекте. Бренд-темы под заказ — как услуга студии.
+
+## Privacy
+
+| Что | Где | Кто может читать |
 |---|---|---|
-| Passwords | The macOS login keychain, as ordinary keychain items tagged `Dajet` | Dajet. Any other app triggers the system's permission dialog. |
-| History, bookmarks, open tabs, hidden elements | Small JSON files in `~/Library/Application Support/Dajet/` | You. |
-| Cookies and site data | WebKit's own store for the app | The sites that set them, as in any browser. |
-| Extensions | Unpacked in `~/Library/Application Support/Dajet/Extensions/`, their data in WebKit's extension store | Each extension, within the permissions you accepted when adding it. |
-| Anything else | Nowhere. There is no server. | — |
+| Пароли | macOS login keychain | Dajet |
+| История, закладки | `~/Library/Application Support/Dajet/` | Ты |
+| Cookies | Store WebKit | Сайты |
+| Всё остальное | Нигде | — |
 
-A **private tab** (`⇧⌘N`) has its own cookie jar and leaves nothing behind when it closes.
+Приватная вкладка (`⇧⌘N`) не оставляет ничего после закрытия.
 
-Apps you allow in System Settings › Privacy & Security › Automation can read the address and title of your tabs with AppleScript; private tabs are never shown.
+## Установка
 
-## Keyboard
+**Скачать:** [bro.dajet.ru](https://bro.dajet.ru) (когда будет готов signed build)
 
-| | |
-|---|---|
-| `⌘L` address · `⌘K` switch tab · `⌘T` new tab · `⌘W` close · `⇧⌘T` reopen | `⌘[` `⌘]` back, forward · `⇧⌘[` `⇧⌘]` previous, next tab · `⌘1`–`⌘9` jump |
-| `⇧⌘S` tabs across the top or down the left · `⌘S` fold the sidebar away · `⇧⌘B` bookmark this page | `⇧⌘R` reading mode · `⇧⌘P` float the video · `⇧⌘H` hide something · `⇧⌘U` what is hidden here |
-| `⌘F` find · `⌘D` duplicate tab · `⇧⌘C` copy address · `⇧⌘V` paste and go | `⌘Y` history · `⇧⌘J` downloads · `⌘,` settings · `⌥⌘L` passwords |
+**Собрать самому:**
+```bash
+git clone https://github.com/bestdeejay-design/dajet-browser
+cd dajet-browser
+swift build
+```
 
-`⌘R` reloads the page; `⌥⌘R` reloads it from origin, checking everything cached with the site again, as Safari's Reload Page From Origin.
+macOS 14+, Xcode 16 / Swift 6.
 
-`⌃Tab` and `⌃⇧Tab` walk along the row of tabs; `Tab` stays the page's, for moving through a form. `esc` puts away whatever is open.
+## Для разработчиков
 
-With Split View on, `⌥⌘N` splits the current page and `⌃⌘←` / `⌃⌘→` go from one page to the other. `⌘W` closes the focused tab and gives the remaining page the whole area. Tabs › Separate Split Tabs keeps both tabs open separately.
+Исходники открыты. ~42 000 строк Swift, ноль зависимостей.
+
+- **SwiftUI** для UI, **AppKit** для title bar, **WKWebView** для страниц
+- Один `Tab` на страницу, lazy loading
+- Блокировщик рекламы — `WKContentRuleList`, ноль стоимости во время выполнения
+- `Sources/Dajet/`: `Vault.swift` (keychain), `Shield.swift` (блокировщик), `Curtain.swift` (скрытые элементы), `Session.swift` (сессия), `Updater.swift` (обновления)
+
+См. [CONTRIBUTING.md](CONTRIBUTING.md) и [SECURITY.md](SECURITY.md).
+
+## Что сейчас
+
+Dajet — это форк [Search 1.0.4](https://github.com/driceroland/Search) от Office Commun (MIT), переименованный в Dajet.
+
+**Что есть:**
+- Всё из Search 1.0.4: вкладки, split view, блокировщик, пароли, расширения и т.д.
+- Переименование Search → Dajet
+- Бренд-пакет: иконка, палитра, CSS-заготовки для тем
+
+**Что в разработке (следующий шаг):**
+- Стартовый экран (тёмная тема, часы, строка ввода)
+- Система тем
+- Локальные виджеты
+- Галерея тем
+
+См. [ROADMAP.md](ROADMAP.md) и [docs/CONCEPT.md](docs/CONCEPT.md) (на русском).
+
+## Лицензия
+
+MIT. Dajet — переименованный форк Search. Имя "Search" и оригинальная иконка остаются за Office Commun.
 
 ---
 
-## For developers
-
-### Why the source is here
-
-So anyone can read exactly what a browser handling their passwords and history is doing, build it themselves, or fix something that bothers them. The code is small enough to actually read — about 42,000 lines of Swift, no dependencies beyond what Apple ships with macOS, one file per concern.
-
-### Building it
-
-- macOS 14 or later, Xcode 16 / Swift 6 toolchain
-- `swift build` — runs the app straight from the SwiftPM binary
-- `./build.sh` — assembles a real, double-clickable `Dajet.app` in `build/`, ad-hoc signed so it runs on your own Mac
-
-A build you make yourself won't be notarized or carry Office Commun's Developer ID, so the first launch needs a right-click → Open (or an allow in System Settings → Privacy & Security). That's expected — it's the same thing that happens with any app that isn't from the App Store or a notarized DMG. Your own build also keeps its passwords apart from a signed Dajet's: the keychain tells the two apart by their signatures.
-
-`./build.sh release dmg` also makes `Dajet.dmg` / `Dajet.zip`. `./build.sh release ship` additionally notarizes and staples — that step needs a Developer ID certificate and Apple credentials, so it only really does anything for Dajet's own releases.
-
-### How it's put together
-
-- **SwiftUI** for everything drawn, **AppKit** for the handful of things SwiftUI doesn't reach on macOS (the window's title bar, dragging the window by an empty part of the tab row), **WKWebView** for pages.
-- One `Tab` per page. Its web view is built lazily — a tab restored from last session doesn't cost a process until you switch to it. That's most of why launching with twenty tabs is still instant. Each page runs in WebKit's own content process, as in Safari; a tab you close is really gone.
-- The ad blocker is a `WKContentRuleList` compiled once at launch and enforced inside WebKit's networking, before a request is made — zero cost at run time, unlike a JavaScript blocker.
-- Hidden elements are a per-site list of selectors injected as a stylesheet at document start, so nothing is ever seen appearing and vanishing.
-- Every colour is a light/dark pair in `Design.swift`, resolved by the window's appearance; nothing else in the code knows which mode it is in.
-- Extensions run on `WKWebExtension` (macOS 15.4+). `Crx.swift` fetches an extension from the Chrome Web Store's public update address and checks the CRX3 signature against the extension's id before anything is unpacked. `Extensions.swift` is the browser's side of WebKit's contract — tabs, the window, permissions, popups. `ExtensionShims.swift` adds, at install, a small script to the extension's worker, pages and content scripts: it defines the Chrome APIs WebKit lacks — `userScripts`, `privacy`, `browsingData`, `sessions`, the old FileSystem API and more — as calls answered natively by Dajet, and mends the places where WebKit behaves differently from Chrome: replies from pages that don't answer, listeners added after a worker starts, workers WebKit loses track of, members and constants it leaves out. Extension pages are served from `chrome-extension://<id>/`, the address they have in Chrome, so servers and sites recognise them. `./bench ext-*` drives all of it from the shell against a test run. `ExtensionNative.swift` speaks Chrome's native messaging to hosts registered in Chrome's `NativeMessagingHosts` folders.
-- `Sources/Dajet/` is one file per concern: `Vault.swift` is the keychain, `Shield.swift` the ad blocker, `Curtain.swift` the hidden elements, `Session.swift` what comes back at launch, `Updater.swift` the update, `Bench.swift` the test socket, and so on. There's no framework of its own to learn first.
-
-### Testing it without closing it
-
-Turn on **Settings › General › Let a script drive Dajet** and the running app listens on a Unix socket in its own folder (readable by your user only). `./bench` at the root of the repository speaks it:
-
-```
-./bench open https://example.com     # a tab of its own, at the end of your row, marked with a flask
-./bench wait 2e7e7e89                 # until it has loaded
-./bench text 2e7e7e89                 # the page's text
-./bench shot 2e7e7e89 out.png         # a picture of it
-./bench click 2e7e7e89 "button.go"    # click, type, submit — through the page's own events
-./bench probe                         # the window's state: open panels, a modal, every window
-./bench close all
-```
-
-Bench tabs are never selected for you, never enter the session or the history, and go when the script says so. It is how this browser is tested while somebody is using it.
-
-`python3 Tests/split_view.py`, after `./build.sh`, checks Split View through the app's own model in a hidden test run with its own settings and files, all removed afterwards. It never makes or shows a window; what can only be seen (dragging onto a page's edge, the divider under the pointer, the motion) is checked by hand on a release candidate.
-
-### Contributing
-
-Issues and pull requests are genuinely welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for how this is reviewed and what tends to get merged. The short version: small changes, no new dependencies, nothing that phones home. Found a security problem? Please report it privately, as [SECURITY.md](SECURITY.md) says.
-
-### License
-
-MIT — see [LICENSE](LICENSE). This is a fork of [Search by Office Commun](https://github.com/driceroland/Search), renamed to Dajet as their license asks (the name "Search" and the original icon stay theirs). Do what you want with the code.
+**Dajet** — минималистичный браузер от дизайн-студии [Dajet](https://dajet.ru).  
+Лендинг: [bro.dajet.ru](https://bro.dajet.ru)
