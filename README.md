@@ -4,7 +4,9 @@
 
 **~6 MB** · macOS 14+ · WebKit · бесплатно
 
-![Dajet browser](.github/screenshot.png)
+![Стартовый экран Dajet — чёрный экран и строка ввода](.github/screenshot.png)
+
+*Стартовый экран Dajet (демо, направление A — [docs/CHOICE.md](docs/CHOICE.md)). Живая версия: [docs/demo-start.html](docs/demo-start.html).*
 
 ---
 
