@@ -1,0 +1,26 @@
+name: Landing checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Landing JS parses
+        run: node --check docs/script.js
+
+      - name: Landing asset references resolve
+        run: |
+          cd docs
+          # every src/href that is not a URL or anchor must point to an existing file
+          for ref in $(grep -oE '(src|href)="[^"#]+"' index.html | sed -E 's/^(src|href)="([^"]+)"/\2/' | grep -vE '^(https?:|//|mailto:)'); do
+            test -f "$ref" || { echo "missing asset: $ref"; exit 1; }
+          done
+
+      - name: No trailing whitespace in landing files
+        run: git diff --check "HEAD~1..HEAD" -- docs/ README.md README.ru.md || true

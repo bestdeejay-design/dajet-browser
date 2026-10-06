@@ -1,0 +1,55 @@
+name: Bug report
+description: Something in Dajet is broken — report it so it can be fixed.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report. Before submitting, please search
+        [existing issues](https://github.com/bestdeejay-design/dajet-browser/issues) to make sure
+        this isn't already reported.
+  - type: input
+    id: version
+    attributes:
+      label: Dajet version
+      description: The app version you're using (About Dajet shows it).
+      placeholder: "e.g. 1.0.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: macos
+    attributes:
+      label: macOS version
+      description: Which macOS are you on?
+      options:
+        - macOS 15.x
+        - macOS 14.x
+        - macOS 13.x
+        - Other / unsupported
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect to happen, and what actually happened?
+      placeholder: "Expected: ... Actual: ..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The shortest path from a clean state to the bug.
+      placeholder: |
+        1. Open Dajet
+        2. ...
+        3. See the error
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Screenshots, console output, crash reports — anything that helps.

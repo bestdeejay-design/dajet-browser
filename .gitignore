@@ -13,3 +13,6 @@ __pycache__/
 *.provisionprofile
 *.p12
 *.mobileprovision
+
+# AI draft/scratch images — not part of the product.
+other/

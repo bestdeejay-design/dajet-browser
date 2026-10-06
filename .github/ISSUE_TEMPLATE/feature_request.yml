@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest an idea for Dajet.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dajet is deliberately minimal — before requesting a feature, read the
+        [principle in README](https://github.com/bestdeejay-design/dajet-browser#principle).
+        Features that break the "silent home" promise are unlikely to be accepted.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the user need, not the feature itself.
+      placeholder: "When I ... I have to ... because there's no way to ..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed solution
+      description: How would you imagine it working?
+      placeholder: "A shortcut that ..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What else could solve the same problem?

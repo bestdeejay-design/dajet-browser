@@ -4,7 +4,7 @@
 
 Silent to the network. Speaks in style.
 
-**~6 MB** · macOS 14+ · WebKit · free
+**~7 MB** · macOS 14+ · WebKit · free
 
 ![Start screen of Dajet — black screen and input line](.github/screenshot.png)
 
