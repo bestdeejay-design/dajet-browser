@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dajet</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; }
+  .field {
+    width: min(560px, 60vw);
+    padding: 14px 22px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 12px;
+    background: rgba(255,255,255,.045);
+    color: rgba(255,255,255,.92);
+    font: 400 17px/1.4 -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+    caret-color: #fff;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .mark { color: rgba(255,255,255,.38); font-size: 15px; letter-spacing: .5px; user-select: none; }
+  .caret { width: 1.5px; height: 22px; background: #fff; opacity: .9; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+  <div class="field"><span class="mark">Dajet</span><span class="caret"></span></div>
+</body>
+</html>
