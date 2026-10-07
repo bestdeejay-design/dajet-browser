@@ -16,8 +16,9 @@
 # app bundle is just a folder with a plist and the binary in the right place.
 #
 # The three files keep the same names from release to release, so the site
-# links to them once and the updater reads one address forever. ./publish.sh
-# copies them into the site.
+# links to them once and the updater reads one address forever. ./release.sh
+# puts the disk image and the ZIP in a GitHub Release and the feed on the
+# site.
 #
 # Two builds from 1.0.5, each for one kind of Mac: Apple Silicon, in build/,
 # and Intel, in build/intel/, served from the site's search/intel/ folder
@@ -35,8 +36,10 @@
 #   - a notarytool profile: xcrun notarytool store-credentials "search"
 #     (SEARCH_NOTARY_PROFILE names it; default "search")
 #   - SEARCH_DOWNLOAD_URL, the https folder the three files are served from,
-#     for the appcast. Default https://bro.dajet.ru, which is
-#     where Updater.feed in Updater.swift looks.
+#     for the appcast. Since 1.0.5 the disk image and the ZIP live in GitHub
+#     Releases, and the default is the stable "latest" URL of the release that
+#     holds them; the feed itself still lives where Updater.feed in
+#     Updater.swift looks (https://bro.dajet.ru).
 #
 # NOTES.md, next to this script, is what's new: newest release first, one
 # paragraph each. The first paragraph goes into the appcast, and from there
@@ -48,8 +51,8 @@ CONFIG="${1:-release}"
 STEP="${2:-app}"
 ARCH="${SEARCH_ARCH:-$(uname -m)}"
 case "$ARCH" in
-  arm64) OUT="build"; SUBFOLDER="" ;;
-  x86_64) OUT="build/intel"; SUBFOLDER="/intel" ;;
+  arm64) OUT="build" ;;
+  x86_64) OUT="build/intel" ;;
   *) echo "SEARCH_ARCH is arm64 or x86_64, not “$ARCH”" >&2; exit 1 ;;
 esac
 APP="$OUT/Dajet.app"
@@ -273,8 +276,10 @@ echo "packed: $ZIP"
 # characters JSON minds escaped, is the line under the version in Settings.
 # Written last — after notarisation has stapled its ticket to the DMG, which
 # changes it — so the DMG's hash is the one people download.
-BASE="${SEARCH_DOWNLOAD_URL:-https://bro.dajet.ru}"
-BASE="${BASE%/}$SUBFOLDER"
+# The stable URL of the latest release's assets, so the feed names where the
+# updater and people fetch from. SEARCH_DOWNLOAD_URL overrides it for a test
+# run or a feed with no GitHub release behind it.
+BASE="${SEARCH_DOWNLOAD_URL:-https://github.com/bestdeejay-design/dajet-browser/releases/latest/download}"
 NOTES=""
 if [ -f NOTES.md ]; then
   NOTES="$(awk 'NF { printf "%s%s", (n++ ? " " : ""), $0; next } n { exit }' NOTES.md \
@@ -344,4 +349,4 @@ for FILE in "$DMG" "$ZIP"; do
 done
 xcrun stapler staple "$DMG"
 write_appcast
-echo "shipped: $DMG, $ZIP, $OUT/appcast.json and its signed ZIP — ./publish.sh <folder> puts them on the site"
+echo "shipped: $DMG, $ZIP, $OUT/appcast.json and its signed ZIP — ./release.sh puts the DMG and ZIP in a GitHub Release and the feed on the site"
