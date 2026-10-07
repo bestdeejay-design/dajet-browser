@@ -1,0 +1,42 @@
+flowchart LR
+    subgraph SRC["~/Projects/dajet-browser — локальная разработка"]
+        direction TB
+        CODE["Sources/Dajet/*.swift — 100 файлов кода"]
+        BSH["build.sh release dmg"]
+        B["build/ — артефакты: app, dmg, zip, appcast — НЕ в git"]
+    end
+    subgraph ORIGIN["bestdeejay-design/dajet-browser — GitHub main"]
+        direction TB
+        DOCS["docs/ — лендинг + релизные файлы (CNAME → bro.dajet.ru)"]
+        F["docs/appcast.json — JSON-фид: версия, build, sha256"]
+    end
+    subgraph SITE["bro.dajet.ru — GitHub Pages (папка /docs)"]
+        direction LR
+        U1["/Dajet.dmg"]
+        U2["/Dajet.zip"]
+        U3["/appcast.json"]
+        U4["/appcast.json.zip — 404 (нет Developer ID для подписи)"]
+    end
+    subgraph MAC["Установленный Dajet на этом Mac"]
+        direction TB
+        AP["/Applications/Dajet.app"]
+        PD["~/Library/Application Support/Dajet/ — сессия, окна, история"]
+        UP["Updater.swift — проверка фида, verify, swap"]
+    end
+    subgraph SHOW["Витрины dajetbro"]
+        direction TB
+        SH1["dajetbro/dajet-browser — README + маркетинговые docs"]
+        SH2["dajetbro/dajetbro — профильный README студии"]
+    end
+    CODE --> BSH
+    BSH --> B
+    B -->|"cp в docs/ + коммит + push"| DOCS
+    DOCS -->|"GitHub Pages раздаёт"| SITE
+    F -.->|"копия"| U3
+    U1 -->|"ручная установка"| AP
+    U2 -.->|"для апдейтера"| UP
+    UP -->|"проверка обновлений"| U3
+    U4 -.->|"скрыт — апдейтер его не видит"| UP
+    AP <--> PD
+    DOCS -.->|"копия README и маркетинг-доков"| SH1
+    SH1 -.->|"ссылка"| SH2
