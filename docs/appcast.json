@@ -1,10 +1,10 @@
 {
-  "version": "1.0.4",
-  "build": 202610062107,
+  "version": "1.0.5",
+  "build": 202610071208,
   "url": "https://bro.dajet.ru/Dajet.zip",
   "dmg": "https://bro.dajet.ru/Dajet.dmg",
-  "sha256": "19ef158b2b3e87b7d2c951e5d08b5ca311b4e38b2dc8290a07215c893bbd1dac",
-  "dmgSha256": "10c6af9d5d8303acca8cfe4db4f4af05457c9669123d047f75a038f36aae990e",
-  "notes": "Several windows, and a lot to discover. ⌘N opens another window with tabs of its own, a tab dragged out of the row becomes one, and pinned tabs are the same in every window. ⌃Tab shows your recent tabs as pictures, and your own keyboard shortcuts are in Settings › Shortcuts. Bringing things over works from Firefox, Zen, Helium, Comet, Opera and Arc — its spaces and pinned tabs included — or from an exported file, and remembers what came from where. New, each off until you turn it on, here or in the card after the update: tab groups, the sidebar on the right, videos that wait for a click, and a downloads button that stays. Also: bookmark folders you arrange yourself, site shortcuts like yt cats, a double-click that takes a pin back home, and downloads whose progress shows on the Dock. Scrolling costs half what it did, 1Password, Bitwarden, iCloud Passwords and Figma get their fixes, and a second careful private report brings another round of security hardening.",
+  "sha256": "d6a06f9c4e0a1568101dbaded68b0b423bf8c1585a0c413e43aad2d8e16e8f94",
+  "dmgSha256": "cc4e2b078690a78a6fd421409c28f1a6e5b64acd0b937b3234937604234db963",
+  "notes": "A release to verify the update path end to end: the feed, the download, the swap, and the session coming back. Windows, tabs and pins are untouched by the updater — only the bundle changes hands, and the next launch is the new Dajet with the same pages on screen.",
   "minimumSystemVersion": "14.0"
 }
