@@ -38,6 +38,6 @@ fi
 
 cp build/appcast.json docs/appcast.json
 git add docs/appcast.json
-git commit -m "docs: publish $VERSION to the site feed" --no-verify
+git commit -m "docs: publish $VERSION to the site feed"
 git push origin main
 echo "released: https://github.com/$REPO/releases/tag/$TAG"
