@@ -1,10 +1,10 @@
 {
   "version": "1.0.5",
-  "build": 202610071208,
+  "build": 202610071236,
   "url": "https://bro.dajet.ru/Dajet.zip",
   "dmg": "https://bro.dajet.ru/Dajet.dmg",
-  "sha256": "d6a06f9c4e0a1568101dbaded68b0b423bf8c1585a0c413e43aad2d8e16e8f94",
-  "dmgSha256": "cc4e2b078690a78a6fd421409c28f1a6e5b64acd0b937b3234937604234db963",
+  "sha256": "d11a0db2a8e70773f449b2795da0741d9e43e41e50cfb2c35526d41ec2aa49da",
+  "dmgSha256": "8af261d93fb7a1f264704181887ac3ce15af020860ddf9406ae72c71af1c3c06",
   "notes": "A release to verify the update path end to end: the feed, the download, the swap, and the session coming back. Windows, tabs and pins are untouched by the updater — only the bundle changes hands, and the next launch is the new Dajet with the same pages on screen.",
   "minimumSystemVersion": "14.0"
 }
