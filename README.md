@@ -40,10 +40,10 @@ Launch it, open Network Monitor — zero connections. Nothing leaves the machine
 
 ## Install
 
-**Download:** [bro.dajet.ru](https://bro.dajet.ru) · **Build from source:**
+**Download:** [latest release, DMG](https://github.com/bestdeejay-design/dajet-browser/releases/latest/download/Dajet.dmg) · **Build from source:**
 
 ```bash
-git clone https://github.com/dajetbro/dajet-browser
+git clone https://github.com/bestdeejay-design/dajet-browser
 cd dajet-browser
 ./build.sh
 ```

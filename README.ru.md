@@ -40,10 +40,10 @@ Dajet занимает позицию, которую большие брауз�
 
 ## Установка
 
-**Скачать:** [bro.dajet.ru](https://bro.dajet.ru) · **Собрать самому:**
+**Скачать:** [последний релиз, DMG](https://github.com/bestdeejay-design/dajet-browser/releases/latest/download/Dajet.dmg) · **Собрать самому:**
 
 ```bash
-git clone https://github.com/dajetbro/dajet-browser
+git clone https://github.com/bestdeejay-design/dajet-browser
 cd dajet-browser
 ./build.sh
 ```
