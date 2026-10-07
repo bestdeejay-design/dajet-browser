@@ -8,7 +8,7 @@ privately first.
 
 Report it on GitHub: the repository's **Security** tab ›
 [**Report a vulnerability**](https://github.com/bestdeejay-design/dajet-browser/security/advisories/new).
-Only the maintainers see it. Or write to **hello@officecommun.com** with
+Only the maintainers see it. Or write to **design@dajet.ru** with
 "security" in the subject. Either way, say what you found, where in the
 code, and how to see it happen. A proof of concept
 that stays on your own machine is welcome; please don't try it on other
