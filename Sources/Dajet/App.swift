@@ -1466,7 +1466,12 @@ struct SceneRoot: View {
     var body: some View {
         ContentView(browser: slot.browser)
             .id(ObjectIdentifier(slot.browser))
-            .onAppear { Browsers.restoreOnce() }
+            .onAppear {
+                Browsers.restoreOnce()
+                // Hands the updater's say-lines to this window's foot line
+                // (checkIfDue only sets the hand-off in a product run).
+                Updater.shared.checkIfDue { slot.browser.announce($0) }
+            }
     }
 }
 
