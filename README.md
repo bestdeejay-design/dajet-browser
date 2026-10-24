@@ -29,6 +29,17 @@ Launch it, open Network Monitor — zero connections. Nothing leaves the machine
 - **Chrome extensions** — paste a Chrome Web Store link (macOS 15.4+)
 - **Private tab** (`⇧⌘N`) — leaves nothing after closing
 
+## Building
+
+The browser's design layer lives in the **[dajet-ui](https://github.com/bestdeejay-design/dajet-ui)**
+package, wired as a local path dependency (`../ui`). Clone both repositories
+side by side — a lone clone of this one won't resolve the dependency:
+
+```
+apps/dajet/browser   ← this repo
+apps/dajet/ui        ← dajet-ui (required, next door)
+```
+
 ## Privacy
 
 | What | Where | Who can read |

@@ -25,13 +25,6 @@ extension Metrics {
     static let plusWidth: CGFloat = 30
 }
 
-extension Motion {
-    /// The Mac's Reduce Motion, for the browser's own effects (the shake).
-    static var reduced: Bool {
-        NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
-    }
-}
-
 /// Dajet's mark — Datum, a D reduced to an aperture: the outer bowl with
 /// the counter cut out of it, read from its own path data rather than
 /// loaded from a file, so it stays a crisp vector at any size. No plate,
