@@ -93,7 +93,7 @@ struct WelcomePanel: View {
                 VStack(alignment: .leading, spacing: 14) {
                     if sources.count > 1 {
                         Segmented(
-                            options: sources.map { ($0, $0.name) },
+                            sources.map { ($0, $0.name) },
                             selection: Binding(get: { source ?? sources[0] }, set: { source = $0 })
                         )
                     } else {
@@ -141,7 +141,7 @@ struct WelcomePanel: View {
                 Text("Tabs wear")
                     .font(.system(size: 13))
                     .foregroundStyle(Palette.muted)
-                Segmented(options: Glyph.allCases.map { ($0, $0.title) }, selection: $prefs.glyph)
+                Segmented(Glyph.allCases.map { ($0, $0.title) }, selection: $prefs.glyph)
             }
         }
     }
@@ -347,7 +347,7 @@ struct WelcomePanel: View {
                     Text(detail).font(.system(size: 11.5)).foregroundStyle(Palette.faint)
                 }
                 Spacer()
-                Switch(on: $on)
+                InkSwitch(on: $on)
             }
         }
     }

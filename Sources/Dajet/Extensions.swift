@@ -1551,7 +1551,7 @@ private struct ExtensionButtons: View {
                         .background(Anchor(id: button.id))
                         .contextMenu { ExtensionActions(id: button.id, name: button.name, extensions: extensions) }
                 }
-                Door(icon: "puzzlepiece.extension", on: extensions.menuOpen, help: "Extensions") {
+                Door("puzzlepiece.extension", on: extensions.menuOpen, help: "Extensions") {
                     extensions.menuOpen.toggle()
                 }
                 .background(Anchor(id: Extensions.menuAnchor))

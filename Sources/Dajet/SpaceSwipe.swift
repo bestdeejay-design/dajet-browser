@@ -234,11 +234,11 @@ struct NewSpaceCard: View {
                     pick(size: 13, box: CGSize(width: 28, height: 26))
                     field
                         .frame(width: 170)
-                    Segmented(options: [(true, "Signed in"), (false, "Signed out")], selection: $shared)
+                    Segmented([(true, "Signed in"), (false, "Signed out")], selection: $shared)
                         .fixedSize()
                         .help(saying)
                     Pill("Cancel") { cancel() }
-                    Pill("Create", filled: true) { create() }
+                    Pill("Create", filled: true, fill: Palette.ink) { create() }
                 }
                 .frame(height: Metrics.strip)
             } else {
@@ -257,7 +257,7 @@ struct NewSpaceCard: View {
                     // Most people want Google and the rest to know them here too;
                     // some want a clean slate.
                     VStack(spacing: 6) {
-                        Segmented(options: [(true, "Signed in"), (false, "Signed out")], selection: $shared, wide: true)
+                        Segmented([(true, "Signed in"), (false, "Signed out")], selection: $shared, wide: true)
                         Text(saying)
                             .font(.system(size: 11))
                             .foregroundStyle(Palette.muted)
@@ -266,7 +266,7 @@ struct NewSpaceCard: View {
                     }
                     HStack(spacing: 8) {
                         Pill("Cancel") { cancel() }
-                        Pill("Create", filled: true) { create() }
+                        Pill("Create", filled: true, fill: Palette.ink) { create() }
                     }
                 }
                 .padding(16)

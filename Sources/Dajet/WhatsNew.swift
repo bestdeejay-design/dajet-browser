@@ -260,7 +260,7 @@ struct WhatsNewCard: View {
                 }
                 .buttonStyle(.plain)
                 Spacer()
-                Pill("Close", filled: true, action: close)
+                Pill("Close", filled: true, fill: Palette.ink, action: close)
             }
         }
         .onAppear {
@@ -285,7 +285,7 @@ struct WhatsNewCard: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer(minLength: 8)
-                    Switch(on: Binding(get: { toggle.get(prefs) }, set: { toggle.set(prefs, $0) }))
+                    InkSwitch(on: Binding(get: { toggle.get(prefs) }, set: { toggle.set(prefs, $0) }))
                 }
                 .padding(.horizontal, 14)
                 .padding(.vertical, 10)

@@ -307,7 +307,7 @@ struct SiteCard: View {
                         .fixedSize()
                         .padding(.trailing, 8)
                 }
-                Switch(on: $on)
+                InkSwitch(on: $on)
             }
             .padding(.leading, MenuMetrics.text)
             .padding(.trailing, MenuMetrics.trailing)
@@ -334,7 +334,7 @@ struct SiteCard: View {
                     .foregroundStyle(Color(nsColor: .labelColor))
                     .fixedSize()
                 Spacer(minLength: 24)
-                Switch(on: $on)
+                InkSwitch(on: $on)
             }
             .padding(.leading, MenuMetrics.text)
             .padding(.trailing, MenuMetrics.trailing)
@@ -398,26 +398,26 @@ struct SiteCard: View {
                 return Safety(
                     symbol: "lock.open", title: "Connection is not secure",
                     detail: "This site's certificate isn't trusted by this Mac. Someone could be reading what you send.",
-                    tint: Palette.unsafe, trust: trust
+                    tint: Palette.caution, trust: trust
                 )
             }
             if tab.built?.hasOnlySecureContent == false {
                 return Safety(
                     symbol: "lock.trianglebadge.exclamationmark", title: "Parts of this page are not secure",
                     detail: "The page came privately, but some of what it shows was fetched over plain http, where anyone on the network could read or change it.",
-                    tint: Palette.unsafe, trust: trust
+                    tint: Palette.caution, trust: trust
                 )
             }
             return Safety(
                 symbol: "lock", title: "Connection is secure",
                 detail: "Your information (for example, passwords or credit card numbers) is private when it is sent to this site.",
-                tint: Palette.safe, trust: trust
+                tint: Palette.positive, trust: trust
             )
         case "http":
             return Safety(
                 symbol: "lock.open", title: "Connection is not secure",
                 detail: "Don't enter passwords or credit card numbers here: anything sent to this site can be read on the way.",
-                tint: Palette.unsafe, trust: nil
+                tint: Palette.caution, trust: nil
             )
         default:
             return nil

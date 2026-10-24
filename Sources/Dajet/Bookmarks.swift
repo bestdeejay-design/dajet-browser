@@ -946,7 +946,7 @@ struct BookmarkDoor: View {
     }
 
     fileprivate static func door(_ browser: Browser, kept: Bool) -> some View {
-        Door(icon: kept ? "bookmark.fill" : "bookmark", help: "Bookmarks") { browser.toggleBookmarks() }
+        Door(kept ? "bookmark.fill" : "bookmark", help: "Bookmarks") { browser.toggleBookmarks() }
     }
 
     /// Watches the tab for where it goes and the bookmarks for what is
@@ -1001,7 +1001,7 @@ struct BookmarkCard: View {
                     bookmarks.remove(id)
                 }
                 Spacer(minLength: 0)
-                Pill("Done", filled: true, action: close)
+                Pill("Done", filled: true, fill: Palette.ink, action: close)
             }
         }
         .padding(14)

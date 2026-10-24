@@ -130,7 +130,7 @@ struct SettingsPanel: View {
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(Palette.ink)
                 Spacer()
-                Door(icon: "xmark", help: "Done   esc") { browser.tuning = false }
+                Door("xmark", help: "Done   esc") { browser.tuning = false }
             }
             .padding(.bottom, 16)
 
@@ -173,7 +173,7 @@ struct SettingsPanel: View {
                         .foregroundStyle(Palette.ink)
                         .frame(width: 24)
                 } else {
-                    Pill("Make default", filled: true) {
+                    Pill("Make default", filled: true, fill: Palette.ink) {
                         Links.becomeDefault { worked in
                             isDefault = Links.isDefault
                             browser.announce(worked && isDefault ? "Links now open here" : "macOS didn't change it")
@@ -225,7 +225,7 @@ struct SettingsPanel: View {
                 } else {
                     HStack(spacing: 6) {
                         Pill("Cancel") { draft = nil }
-                        Pill("Save", filled: true) { saveDraft() }
+                        Pill("Save", filled: true, fill: Palette.ink) { saveDraft() }
                             .disabled(draftProblem != nil)
                             .opacity(draftProblem == nil ? 1 : 0.4)
                     }
@@ -282,7 +282,7 @@ struct SettingsPanel: View {
             }
             Rule()
             Line("Appearance", "Light, dark, or whatever the Mac is doing — pages follow it too") {
-                Segmented(options: Look.allCases.map { ($0, $0.title) }, selection: $prefs.look)
+                Segmented([(Look.light, "Light"), (Look.dark, "Dark"), (Look.system, "System")], selection: $prefs.look)
             }
             Rule()
             Line("Page zoom", "Where every site starts. ⌘+ and ⌘− are still remembered for each site.") {
@@ -291,55 +291,55 @@ struct SettingsPanel: View {
             }
             Rule()
             Line("Correct spelling as you type", "macOS's autocorrect inside pages — the one that capitalises for you") {
-                Switch(on: $prefs.autocorrect)
+                InkSwitch(on: $prefs.autocorrect)
             }
             Rule()
             Line("Peek at a link with a shift-click", "Its page opens in a panel over the one you're reading. Escape puts it away; the other button keeps it as a tab") {
-                Switch(on: $prefs.peeksLinks)
+                InkSwitch(on: $prefs.peeksLinks)
             }
             Rule()
             Line("Open links from other apps in a small window", "To read and close, or keep with Open in Dajet (⌘O)") {
-                Switch(on: $prefs.littleLinks)
+                InkSwitch(on: $prefs.littleLinks)
             }
             Rule()
             Line("Address bar commands", "A word like \"settings\" or \"new tab\", typed alone in the address field, goes there instead of searching for it") {
-                Switch(on: $prefs.commandBar)
+                InkSwitch(on: $prefs.commandBar)
             }
             Rule()
             Line("Show where links go", "Point at a link and its address shows at the bottom of the page") {
-                Switch(on: $prefs.showsLinks)
+                InkSwitch(on: $prefs.showsLinks)
             }
             Rule()
             Line("Scroll with the middle button", "Click the wheel on a page, then move the mouse up or down to scroll, as on Windows. Click again to stop") {
-                Switch(on: $prefs.autoScroll)
+                InkSwitch(on: $prefs.autoScroll)
             }
             Rule()
             Line("Pages at 120 Hz", "Animations and scrolling in pages at up to 120 frames a second on a screen that can, instead of 60 as in Safari. Uses more battery. Open tabs follow when reloaded") {
-                Switch(on: $prefs.fastPages)
+                InkSwitch(on: $prefs.fastPages)
             }
             Rule()
             Line("Hold a swipe to pick from history", "Swipe back or forward and keep your fingers down: the pages that way appear, and moving up or down picks one to go to") {
-                Switch(on: $prefs.holdsHistory)
+                InkSwitch(on: $prefs.holdsHistory)
             }
             Rule()
             Line("Flick the floating video to a corner", "Two fingers on it send it to the corner or edge they point at, instead of pushing it along; a strong swipe at the side of the screen it is against tucks it in there, a sliver left to bring it back by. Dragging still puts it anywhere") {
-                Switch(on: $prefs.floatFlicks)
+                InkSwitch(on: $prefs.floatFlicks)
             }
             Rule()
             Line("Videos wait for a click", "Videos don't start by themselves, even without sound; they play when you press play. Tabs already open follow once closed and opened again, or after they've slept") {
-                Switch(on: $prefs.waitsForPlay)
+                InkSwitch(on: $prefs.waitsForPlay)
             }
             Rule()
             Line("Float the video when you switch tabs", "A video playing on YouTube and the like comes out into its floating window when you go to another tab, and back when you return. ⇧⌘P still floats one by hand") {
-                Switch(on: $prefs.floatsOnLeave)
+                InkSwitch(on: $prefs.floatsOnLeave)
             }
             Rule()
             Line("Float the video when you switch apps", "A video playing on the site you're on comes out into its floating window as another app comes to the front, and goes back into its tab when you return") {
-                Switch(on: $prefs.floatsAway)
+                InkSwitch(on: $prefs.floatsAway)
             }
             Rule()
             Line("Let a script drive Dajet", "A local socket for testing. Its tabs open beside yours with a flask on them and never take over — see ./bench") {
-                Switch(on: $prefs.bench)
+                InkSwitch(on: $prefs.bench)
             }
         }
     }
@@ -386,7 +386,7 @@ struct SettingsPanel: View {
     private var toolbar: some View {
         Card {
             Line("Back, forward and reload on the left", "Beside the window's buttons, before the tabs") {
-                Switch(on: $prefs.navigationLeft)
+                InkSwitch(on: $prefs.navigationLeft)
             }
         }
     }
@@ -394,7 +394,7 @@ struct SettingsPanel: View {
     private var tabs: some View {
         Card {
             Line("Tabs in a sidebar", "Down the \(prefs.sidePosition.rawValue) instead of across the top. Pull its edge to make it wider; double-click the edge to reset.") {
-                Switch(on: Binding(
+                InkSwitch(on: Binding(
                     get: { prefs.sidebar },
                     set: { on in withAnimation(Motion.glide) { prefs.sidebar = on } }
                 ))
@@ -402,58 +402,58 @@ struct SettingsPanel: View {
             if prefs.sidebar {
                 Rule()
                 Line("Sidebar position", "Tabs down the \(prefs.sidePosition.rawValue) edge of the window") {
-                    Segmented(options: SidebarPosition.allCases.map { ($0, $0.title) }, selection: $prefs.sidePosition)
+                    Segmented(SidebarPosition.allCases.map { ($0, $0.title) }, selection: $prefs.sidePosition)
                 }
                 Rule()
                 Line("Hide the sidebar until the pointer reaches the edge", "The page takes the whole window; push against its \(prefs.sidePosition.rawValue) edge for the tabs. ⌘S keeps them out.") {
-                    Switch(on: $prefs.sideHides)
+                    InkSwitch(on: $prefs.sideHides)
                 }
             }
             Rule()
             Line("Tabs show", "Beside the title, and on a pinned square") {
-                Segmented(options: Glyph.allCases.map { ($0, $0.title) }, selection: $prefs.glyph)
+                Segmented(Glyph.allCases.map { ($0, $0.title) }, selection: $prefs.glyph)
             }
             Rule()
             Line("Show the bookmarks bar", "Your bookmarks in a row above the page, folders opening as menus. It folds away with the tabs") {
-                Switch(on: $prefs.bookmarksBar)
+                InkSwitch(on: $prefs.bookmarksBar)
             }
             Rule()
             Line("Show how far you've read", "The tab you're on fills with grey as you scroll down the page") {
-                Switch(on: $prefs.showsReading)
+                InkSwitch(on: $prefs.showsReading)
             }
             Rule()
             Line("Sleep tabs you aren't using", "After half an hour away they come back where you left them. Pinned tabs, sound, calls and anything typed stay awake.") {
-                Switch(on: $prefs.sleepsTabs)
+                InkSwitch(on: $prefs.sleepsTabs)
             }
             Rule()
             Line("Load background tabs when you go to them", "A link opened behind the page, with ⌘-click or the middle button, or a batch of links from another app, waits until you go to its tab. ⇧⌘-click still takes you there at once.") {
-                Switch(on: $prefs.lazyTabs)
+                InkSwitch(on: $prefs.lazyTabs)
             }
             Rule()
             Line("Search a site from the address field", "Type the start of a site's name, like red or yout, then Tab, and what you type next searches that site. Sites you visit that offer a search join the list.") {
-                Switch(on: $prefs.searchesSites)
+                InkSwitch(on: $prefs.searchesSites)
             }
             Rule()
             Line("Start with a fresh window", "Each time Dajet opens, your pinned tabs are there and last time's other tabs aren't.") {
-                Switch(on: $prefs.startsFresh)
+                InkSwitch(on: $prefs.startsFresh)
             }
             Rule()
             Line("Spaces", "Separate sets of tabs, signed in where the others are or starting afresh, switched with ⌃1–⌃9, two fingers sideways over the column, or the space's icon. Mission Control's own ⌃1–⌃9, if you turned them on, take those keys first.") {
-                Switch(on: $prefs.usesSpaces)
+                InkSwitch(on: $prefs.usesSpaces)
             }
             Rule()
             Line("Tab groups", "Named sections in the sidebar. Right-click a tab to start a group; click its heading to hide or show its tabs.") {
-                Switch(on: $prefs.usesTabGroups)
+                InkSwitch(on: $prefs.usesTabGroups)
             }
             if prefs.sidebar {
                 Rule()
                 Line("Pinned rows", "As in Arc: pins as squares for the sites you live in, pins as rows under them for pages you keep, and a line over the rest with Clear. Right-click a tab to pin it as a row.") {
-                    Switch(on: $prefs.listsPins)
+                    InkSwitch(on: $prefs.listsPins)
                 }
             }
             Rule()
             Line("Split View", "Show two tabs side by side. Drag a tab onto a page to pair them.") {
-                Switch(on: $prefs.splitView)
+                InkSwitch(on: $prefs.splitView)
             }
         }
     }
@@ -479,11 +479,11 @@ struct SettingsPanel: View {
                 }
                 Rule()
                 Line("Offer to save passwords", savingDetail) {
-                    Switch(on: $prefs.savesPasswords)
+                    InkSwitch(on: $prefs.savesPasswords)
                 }
                 Rule()
                 Line("Fill in sign-ins", "Click a sign-in box and the accounts kept for the site hang from it") {
-                    Switch(on: $prefs.fillsPasswords)
+                    InkSwitch(on: $prefs.fillsPasswords)
                 }
                 Rule()
                 Line(
@@ -494,7 +494,7 @@ struct SettingsPanel: View {
                         ? "macOS was told no — System Settings › Privacy & Security › Passkeys Access for Web Browsers"
                         : "Touch ID or an iCloud passkey, on sites that offer one"
                 ) {
-                    Switch(on: $prefs.passkeys)
+                    InkSwitch(on: $prefs.passkeys)
                 }
                 if !Vault.never.isEmpty {
                     Rule()
@@ -526,11 +526,11 @@ struct SettingsPanel: View {
             }
             Rule()
             Line("Ask where to save each file") {
-                Switch(on: $prefs.asksWhereToSave)
+                InkSwitch(on: $prefs.asksWhereToSave)
             }
             Rule()
             Line("Always show the downloads button", "Beside the other buttons, even with nothing downloading. Off, it shows only while a file comes in") {
-                Switch(on: $prefs.alwaysShowsDownloads)
+                InkSwitch(on: $prefs.alwaysShowsDownloads)
             }
         }
     }
@@ -541,7 +541,7 @@ struct SettingsPanel: View {
         VStack(alignment: .leading, spacing: 18) {
             Card {
                 Line("Block ads and trackers", shield.trouble ?? "Third parties whose only job is to watch") {
-                    Switch(on: $prefs.shielded)
+                    InkSwitch(on: $prefs.shielded)
                 }
                 if let trouble = shield.trouble {
                     Rule()
@@ -552,7 +552,7 @@ struct SettingsPanel: View {
                 if let host = browser.hereHost, prefs.shielded, shield.trouble == nil {
                     Rule()
                     Line("Block on \(host)", "Turn off here if the site breaks — the page reloads") {
-                        Switch(on: Binding(
+                        InkSwitch(on: Binding(
                             get: { !Shield.shared.isPaused(on: host) },
                             set: { on in
                                 Shield.shared.pause(host, !on)
@@ -563,7 +563,7 @@ struct SettingsPanel: View {
                 }
                 Rule()
                 Line("Prevent cross-site tracking", "As in Safari. Off, sites you rarely open keep their sign-ins, and trackers inside other sites can follow you across them again, as in Chrome. Private tabs keep it on") {
-                    Switch(on: Binding(get: { !prefs.keepsSignIns }, set: { prefs.keepsSignIns = !$0 }))
+                    InkSwitch(on: Binding(get: { !prefs.keepsSignIns }, set: { prefs.keepsSignIns = !$0 }))
                 }
                 Rule()
                 Line("Camera, microphone, location and notifications", "What each site was allowed or refused, and the sites whose videos don't float") {
@@ -571,7 +571,7 @@ struct SettingsPanel: View {
                 }
                 Rule()
                 Line("Let sites ask to send notifications", "A site asks on a card over its page, and only one you allow reaches your Mac's notifications. Private tabs are never asked") {
-                    Switch(on: $prefs.siteNotifications)
+                    InkSwitch(on: $prefs.siteNotifications)
                 }
                 NotificationSites()
             }
@@ -615,7 +615,7 @@ struct SettingsPanel: View {
                 Line(versionTitle, versionDetail) { versionControl }
                 Rule()
                 Line("Install updates on its own", "Off, Dajet only looks when you press Check for Updates, and installs only when you press Install") {
-                    Switch(on: $prefs.installsUpdates)
+                    InkSwitch(on: $prefs.installsUpdates)
                 }
                 Rule()
                 Line("Found something wrong?", "Opens a draft with the version already in it") {
@@ -695,12 +695,12 @@ struct SettingsPanel: View {
         case .fetching:
             Ring(size: 12)
         case .ready:
-            Pill("Relaunch now", filled: true) { updater.relaunch() }
+            Pill("Relaunch now", filled: true, fill: Palette.ink) { updater.relaunch() }
         case .offered:
-            Pill(updater.fetchingDisk ? "Downloading…" : "Download", filled: true) { updater.openDisk() }
+            Pill(updater.fetchingDisk ? "Downloading…" : "Download", filled: true, fill: Palette.ink) { updater.openDisk() }
                 .disabled(updater.fetchingDisk)
         case .waiting:
-            Pill("Install", filled: true) { updater.install() }
+            Pill("Install", filled: true, fill: Palette.ink) { updater.install() }
         }
     }
 
@@ -738,159 +738,6 @@ struct SettingsPanel: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 9)
         }
-    }
-}
-
-/// A row of choices in a grey track, one of them lifted out in white. The
-/// white slides to the one you pick rather than appearing there.
-struct Segmented<Option: Hashable>: View {
-    let options: [(Option, String)]
-    @Binding var selection: Option
-    /// True when the control has the whole width to itself, so the choices
-    /// share it evenly instead of each taking only what its word needs.
-    var wide = false
-
-    @Namespace private var slide
-
-    var body: some View {
-        HStack(spacing: 2) {
-            ForEach(options, id: \.0) { option, title in
-                Text(title)
-                    .font(.system(size: 11.5, weight: option == selection ? .medium : .regular))
-                    .foregroundStyle(option == selection ? Palette.ink : Palette.muted)
-                    .lineLimit(1)
-                    .fixedSize(horizontal: !wide, vertical: false)
-                    .frame(maxWidth: wide ? .infinity : nil)
-                    .padding(.horizontal, wide ? 4 : 10)
-                    .padding(.vertical, 5)
-                    .background {
-                        if option == selection {
-                            RoundedRectangle(cornerRadius: 7, style: .continuous)
-                                .fill(Palette.ground)
-                                .shadow(color: .black.opacity(0.08), radius: 3, y: 1)
-                                .matchedGeometryEffect(id: "chosen", in: slide)
-                        }
-                    }
-                    .contentShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
-                    .onTapGesture {
-                        withAnimation(Motion.settle) { selection = option }
-                    }
-            }
-        }
-        .padding(2)
-        .background(Palette.wash, in: RoundedRectangle(cornerRadius: 9, style: .continuous))
-        .animation(Motion.settle, value: selection)
-    }
-}
-
-/// On or off, in ink rather than in blue.
-struct Switch: View {
-    @Binding var on: Bool
-
-    var body: some View {
-        Capsule()
-            .fill(on ? Palette.ink : Palette.faint)
-            .frame(width: 30, height: 18)
-            .overlay(alignment: on ? .trailing : .leading) {
-                Circle()
-                    .fill(Palette.ground)
-                    .shadow(color: .black.opacity(0.18), radius: 1.5, y: 1)
-                    .padding(2)
-            }
-            .contentShape(Capsule())
-            .onTapGesture { withAnimation(Motion.settle) { on.toggle() } }
-            .animation(Motion.settle, value: on)
-    }
-}
-
-/// A value moved one stop at a time: − and + either side of it, in the same
-/// outlined capsule as a pill. Pressing the value itself takes it home.
-struct Steps: View {
-    let stops: [Double]
-    @Binding var value: Double
-    let home: Double
-    let label: (Double) -> String
-
-    /// The nearest stop either way — a value between stops, from before
-    /// there were stops, still moves to a round one.
-    private var below: Double? { stops.last { $0 < value - 0.001 } }
-    private var above: Double? { stops.first { $0 > value + 0.001 } }
-
-    var body: some View {
-        HStack(spacing: 0) {
-            Step(icon: "minus", to: below) { value = $0 }
-            Button { value = home } label: {
-                Text(label(value))
-                    .font(.system(size: 11.5))
-                    .monospacedDigit()
-                    .foregroundStyle(Palette.ink)
-                    .frame(minWidth: 36)
-                    .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .help("Back to \(label(home))")
-            Step(icon: "plus", to: above) { value = $0 }
-        }
-        .padding(.horizontal, 2)
-        .frame(height: 24)
-        .background(Palette.ground, in: Capsule())
-        .overlay(Capsule().strokeBorder(Palette.hairline, lineWidth: 1))
-    }
-
-    private struct Step: View {
-        let icon: String
-        let to: Double?
-        let act: (Double) -> Void
-        @State private var hovering = false
-
-        var body: some View {
-            Button { if let to { act(to) } } label: {
-                Image(systemName: icon)
-                    .font(.system(size: 9, weight: .semibold))
-                    .foregroundStyle(to == nil ? Palette.faint : Palette.ink)
-                    .frame(width: 20, height: 20)
-                    .background(hovering && to != nil ? Palette.hover : .clear, in: Circle())
-                    .contentShape(Circle())
-            }
-            .buttonStyle(.plain)
-            .disabled(to == nil)
-            .onHover { hovering = $0 }
-            .animation(Motion.quick, value: hovering)
-        }
-    }
-}
-
-/// A small capsule that does one thing. Outlined by default; filled in ink
-/// when it is the thing you came here to press.
-struct Pill: View {
-    let title: String
-    var filled = false
-    var tint: Color = Palette.ink
-    let action: () -> Void
-
-    @State private var hovering = false
-
-    init(_ title: String, filled: Bool = false, tint: Color = Palette.ink, action: @escaping () -> Void) {
-        self.title = title
-        self.filled = filled
-        self.tint = tint
-        self.action = action
-    }
-
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.system(size: 11.5))
-                .foregroundStyle(filled ? Palette.ground : tint)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 5)
-                .background(filled ? Palette.ink : (hovering ? Palette.hover : Palette.ground), in: Capsule())
-                .overlay(Capsule().strokeBorder(filled ? .clear : Palette.hairline, lineWidth: 1))
-                .contentShape(Capsule())
-        }
-        .buttonStyle(.plain)
-        .onHover { hovering = $0 }
-        .animation(Motion.quick, value: hovering)
     }
 }
 

@@ -438,9 +438,9 @@ struct Helm: View {
             // Nowhere to go and nothing to reload: the doors stay in place,
             // greyed, so the row doesn't shift when a tab arrives.
             HStack(spacing: 4) {
-                Door(icon: "chevron.left") {}
-                Door(icon: "chevron.right") {}
-                Door(icon: "arrow.clockwise") {}
+                Door("chevron.left") {}
+                Door("chevron.right") {}
+                Door("arrow.clockwise") {}
             }
             .opacity(0.3)
             .allowsHitTesting(false)
@@ -455,15 +455,15 @@ struct Helm: View {
             let back = !tab.isBlank && tab.canGoBack
             let forward = !tab.isBlank && tab.canGoForward
             HStack(spacing: 4) {
-                Door(icon: "chevron.left", help: "Back   ⌘[") { browser.back() }
+                Door("chevron.left", help: "Back   ⌘[") { browser.back() }
                     .disabled(!back)
                     .opacity(back ? 1 : 0.3)
-                Door(icon: "chevron.right", help: "Forward   ⌘]") { browser.forward() }
+                Door("chevron.right", help: "Forward   ⌘]") { browser.forward() }
                     .disabled(!forward)
                     .opacity(forward ? 1 : 0.3)
                 // Reload, or stop while it is still coming.
                 Door(
-                    icon: tab.loading ? "xmark" : "arrow.clockwise",
+                    tab.loading ? "xmark" : "arrow.clockwise",
                     help: tab.loading ? "Stop   ⌘." : "Reload   ⌘R"
                 ) {
                     if tab.loading { tab.stop() } else { browser.reload() }

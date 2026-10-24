@@ -887,35 +887,6 @@ struct Speaker: View {
     }
 }
 
-/// A small square holding one symbol. Lit when what it opens is open.
-struct Door: View {
-    let icon: String
-    var on = false
-    var help = ""
-    let act: () -> Void
-
-    @State private var hovering = false
-
-    var body: some View {
-        Button(action: act) {
-            Image(systemName: icon)
-                .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(on ? Palette.ink : (hovering ? Palette.ink.opacity(0.7) : Palette.muted))
-                .frame(width: 26, height: 26)
-                .background(
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .fill(on ? Palette.wash : (hovering ? Palette.hover : .clear))
-                )
-                .contentShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-        }
-        .buttonStyle(.plain)
-        .onHover { hovering = $0 }
-        .help(help)
-        .animation(Motion.quick, value: hovering)
-        .animation(Motion.quick, value: on)
-    }
-}
-
 /// A pinned square picked up and carried across the grid, its travel its
 /// own: only the square being carried redraws as the hand moves, and the
 /// grid only when it changes place.

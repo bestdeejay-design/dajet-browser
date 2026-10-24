@@ -54,7 +54,7 @@ struct ExtensionsPage: View {
                             if extensions.busy != nil {
                                 Ring(size: 12)
                             } else {
-                                Pill("Add", filled: true, action: add)
+                                Pill("Add", filled: true, fill: Palette.ink, action: add)
                                     .disabled(Crx.id(in: link) == nil)
                             }
                         }
@@ -78,7 +78,7 @@ struct ExtensionsPage: View {
 
                 Card {
                     Line("Allow on private tabs", "Off by default - a private tab keeps nothing, extensions included") {
-                        Switch(on: Binding(
+                        InkSwitch(on: Binding(
                             get: { browser.prefs.extensionsInPrivate },
                             set: { browser.prefs.extensionsInPrivate = $0 }
                         ))
@@ -183,7 +183,7 @@ struct ExtensionsPage: View {
                     }
                     Quick("Remove", tint: .red.opacity(0.75)) { extensions.remove(item.id) }
                 }
-                Switch(on: Binding(get: { item.enabled }, set: { extensions.setEnabled(item.id, $0) }))
+                InkSwitch(on: Binding(get: { item.enabled }, set: { extensions.setEnabled(item.id, $0) }))
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 10)

@@ -255,7 +255,7 @@ struct AssistantPanel: View {
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(Palette.ink)
                 Spacer(minLength: 0)
-                Door(icon: "xmark", help: "Close   esc") { browser.closeAssistant() }
+                Door("xmark", help: "Close   esc") { browser.closeAssistant() }
             }
             .padding(.horizontal, 16)
             .padding(.top, 12)
@@ -350,7 +350,7 @@ struct AssistantPanel: View {
                 .foregroundStyle(Palette.muted)
                 .fixedSize(horizontal: false, vertical: true)
             HStack(spacing: 8) {
-                Pill("Continue", filled: true) { assistant.agree() }
+                Pill("Continue", filled: true, fill: Palette.ink) { assistant.agree() }
                 Pill("Cancel") { browser.closeAssistant() }
             }
         }
@@ -418,7 +418,7 @@ struct AISettings: View {
         VStack(alignment: .leading, spacing: 18) {
             Card {
                 Line("Use AI on pages", "Summarize a page, or ask about it, from the View menu. Nothing is sent until you ask") {
-                    Switch(on: $prefs.ai)
+                    InkSwitch(on: $prefs.ai)
                 }
             }
             if prefs.ai {
@@ -473,7 +473,7 @@ struct AISettings: View {
             switch engine.state {
             case .absent:
                 Line("Model", "\(AIEngine.model.name), downloaded once (\(size)) and checked. Nothing leaves this Mac") {
-                    Pill("Download", filled: true) { engine.install() }
+                    Pill("Download", filled: true, fill: Palette.ink) { engine.install() }
                 }
             case .downloading(let done):
                 Line("Model", "Downloading… \(Int(done * 100))%") {

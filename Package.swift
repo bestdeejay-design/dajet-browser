@@ -4,9 +4,13 @@ import PackageDescription
 let package = Package(
     name: "Dajet",
     platforms: [.macOS(.v14)],
+    dependencies: [
+        .package(path: "../ui")
+    ],
     targets: [
         .executableTarget(
             name: "Dajet",
+            dependencies: [.product(name: "DajetUI", package: "ui")],
             path: "Sources/Dajet",
             // Same reasoning as the canvas app next door: the whole interface is
             // main-thread by nature, and Swift 6's strict isolation buys nothing

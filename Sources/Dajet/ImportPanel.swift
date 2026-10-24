@@ -123,7 +123,7 @@ struct ImportPanel: View {
                             browser.managing = true
                         }
                     } else if let source = pick {
-                        Pill(bringing ? "Bringing…" : "Bring them in", filled: true) { bring(from: source) }
+                        Pill(bringing ? "Bringing…" : "Bring them in", filled: true, fill: Palette.ink) { bring(from: source) }
                             .disabled(bringing || !(wantsPasswords || wantsBookmarks || wantsHistory || (wantsExtensions && !fresh(source).isEmpty)
                                                      || (wantsArc && arcCounts[key(source, profile(of: source))] != nil)))
                         if bringing { Ring(size: 10) }
@@ -241,13 +241,13 @@ struct ImportPanel: View {
                 Rule()
                 Line("Spaces and pinned tabs",
                      "\(arc.spaces == 1 ? "1 space" : "\(arc.spaces) spaces"), \(arc.pinned) pinned — each a space here, its pinned tabs asleep in it, the favourites as pins") {
-                    Switch(on: $wantsArc)
+                    InkSwitch(on: $wantsArc)
                 }
             }
             if !extensions.isEmpty {
                 Rule()
                 Line("Extensions", "\(extensions.count) found — installed fresh from the Chrome Web Store, you say yes to each one") {
-                    Switch(on: $wantsExtensions)
+                    InkSwitch(on: $wantsExtensions)
                 }
             }
         }
@@ -299,9 +299,9 @@ struct ImportPanel: View {
     @ViewBuilder
     private func option(_ on: Binding<Bool>, none: Bool) -> some View {
         if none {
-            Switch(on: .constant(false)).disabled(true).opacity(0.4)
+            InkSwitch(on: .constant(false)).disabled(true).opacity(0.4)
         } else {
-            Switch(on: on)
+            InkSwitch(on: on)
         }
     }
 

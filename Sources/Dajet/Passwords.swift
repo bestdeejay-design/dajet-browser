@@ -242,7 +242,7 @@ struct PasswordsPanel: View {
                             .padding(.vertical, 7)
                     }
                     .background(Palette.wash, in: RoundedRectangle(cornerRadius: 9, style: .continuous))
-                    Pill("Save", filled: true, action: keep)
+                    Pill("Save", filled: true, fill: Palette.ink, action: keep)
                         .disabled(Vault.host(of: site).isEmpty || password.isEmpty)
                 }
             }
