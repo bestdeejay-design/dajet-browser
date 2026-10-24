@@ -54,7 +54,7 @@ struct ExtensionsPage: View {
                             if extensions.busy != nil {
                                 Ring(size: 12)
                             } else {
-                                Pill("Add", filled: true, fill: Palette.ink, action: add)
+                                Pill("Add", filled: true, action: add)
                                     .disabled(Crx.id(in: link) == nil)
                             }
                         }

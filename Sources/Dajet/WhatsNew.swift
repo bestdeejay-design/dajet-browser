@@ -260,7 +260,7 @@ struct WhatsNewCard: View {
                 }
                 .buttonStyle(.plain)
                 Spacer()
-                Pill("Close", filled: true, fill: Palette.ink, action: close)
+                Pill("Close", filled: true, action: close)
             }
         }
         .onAppear {

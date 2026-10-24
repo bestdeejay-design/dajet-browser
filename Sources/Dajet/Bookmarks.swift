@@ -1001,7 +1001,7 @@ struct BookmarkCard: View {
                     bookmarks.remove(id)
                 }
                 Spacer(minLength: 0)
-                Pill("Done", filled: true, fill: Palette.ink, action: close)
+                Pill("Done", filled: true, action: close)
             }
         }
         .padding(14)

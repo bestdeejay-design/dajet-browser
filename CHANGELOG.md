@@ -9,12 +9,15 @@ paragraph in `NOTES.md` (what Settings and the updater show), and the list
 is what gets posted as the update. What is planned but not done yet lives
 in [ROADMAP.md](ROADMAP.md).
 
+## Unreleased
+
+Nothing yet since 1.0.6.
+
 ## 1.0.6
 
 The interface now stands on DajetUI, the shared design base of the Dajet line — browser, player and editor draw from one palette, one type scale, one set of springs, one look switch. Nothing about the browser was meant to change, and nothing did: the colours, corners and movements are the same numbers the package was copied from, only said once now instead of three times across the line. The tab strip's centre block of buttons also takes back its true width (90, not 94 — an arithmetic slip in the port, caught in review), and filled pills read as they always did.
 
-## Unreleased
-
+## 1.0.5 — 7 October 2026
 ### Added
 
 - Close Group, in a tab group's menu, closes the group and every tab in it. ⇧⌘T brings them back one by one, into the same group, named as it was. Asked for by email
