@@ -173,7 +173,7 @@ struct SettingsPanel: View {
                         .foregroundStyle(Palette.ink)
                         .frame(width: 24)
                 } else {
-                    Pill("Make default", filled: true, fill: Palette.ink) {
+                    Pill("Make default", filled: true) {
                         Links.becomeDefault { worked in
                             isDefault = Links.isDefault
                             browser.announce(worked && isDefault ? "Links now open here" : "macOS didn't change it")
@@ -225,7 +225,7 @@ struct SettingsPanel: View {
                 } else {
                     HStack(spacing: 6) {
                         Pill("Cancel") { draft = nil }
-                        Pill("Save", filled: true, fill: Palette.ink) { saveDraft() }
+                        Pill("Save", filled: true) { saveDraft() }
                             .disabled(draftProblem != nil)
                             .opacity(draftProblem == nil ? 1 : 0.4)
                     }
@@ -695,12 +695,12 @@ struct SettingsPanel: View {
         case .fetching:
             Ring(size: 12)
         case .ready:
-            Pill("Relaunch now", filled: true, fill: Palette.ink) { updater.relaunch() }
+            Pill("Relaunch now", filled: true) { updater.relaunch() }
         case .offered:
-            Pill(updater.fetchingDisk ? "Downloading…" : "Download", filled: true, fill: Palette.ink) { updater.openDisk() }
+            Pill(updater.fetchingDisk ? "Downloading…" : "Download", filled: true) { updater.openDisk() }
                 .disabled(updater.fetchingDisk)
         case .waiting:
-            Pill("Install", filled: true, fill: Palette.ink) { updater.install() }
+            Pill("Install", filled: true) { updater.install() }
         }
     }
 

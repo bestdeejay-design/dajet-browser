@@ -123,7 +123,7 @@ struct ImportPanel: View {
                             browser.managing = true
                         }
                     } else if let source = pick {
-                        Pill(bringing ? "Bringing…" : "Bring them in", filled: true, fill: Palette.ink) { bring(from: source) }
+                        Pill(bringing ? "Bringing…" : "Bring them in", filled: true) { bring(from: source) }
                             .disabled(bringing || !(wantsPasswords || wantsBookmarks || wantsHistory || (wantsExtensions && !fresh(source).isEmpty)
                                                      || (wantsArc && arcCounts[key(source, profile(of: source))] != nil)))
                         if bringing { Ring(size: 10) }

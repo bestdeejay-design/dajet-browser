@@ -350,7 +350,7 @@ struct AssistantPanel: View {
                 .foregroundStyle(Palette.muted)
                 .fixedSize(horizontal: false, vertical: true)
             HStack(spacing: 8) {
-                Pill("Continue", filled: true, fill: Palette.ink) { assistant.agree() }
+                Pill("Continue", filled: true) { assistant.agree() }
                 Pill("Cancel") { browser.closeAssistant() }
             }
         }
@@ -473,7 +473,7 @@ struct AISettings: View {
             switch engine.state {
             case .absent:
                 Line("Model", "\(AIEngine.model.name), downloaded once (\(size)) and checked. Nothing leaves this Mac") {
-                    Pill("Download", filled: true, fill: Palette.ink) { engine.install() }
+                    Pill("Download", filled: true) { engine.install() }
                 }
             case .downloading(let done):
                 Line("Model", "Downloading… \(Int(done * 100))%") {

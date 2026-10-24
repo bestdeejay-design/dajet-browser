@@ -238,7 +238,7 @@ struct NewSpaceCard: View {
                         .fixedSize()
                         .help(saying)
                     Pill("Cancel") { cancel() }
-                    Pill("Create", filled: true, fill: Palette.ink) { create() }
+                    Pill("Create", filled: true) { create() }
                 }
                 .frame(height: Metrics.strip)
             } else {
@@ -266,7 +266,7 @@ struct NewSpaceCard: View {
                     }
                     HStack(spacing: 8) {
                         Pill("Cancel") { cancel() }
-                        Pill("Create", filled: true, fill: Palette.ink) { create() }
+                        Pill("Create", filled: true) { create() }
                     }
                 }
                 .padding(16)
